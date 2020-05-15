@@ -1,0 +1,10 @@
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\bin\Debug\DataLayer.dll.config
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\bin\Debug\DataLayer.dll
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\bin\Debug\DataLayer.pdb
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\bin\Debug\EntityFramework.dll
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\bin\Debug\EntityFramework.xml
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\obj\Debug\DataLayer.dll
+D:\Projects\WFormCP\BookMyShowAppp\DataLayer\obj\Debug\DataLayer.pdb

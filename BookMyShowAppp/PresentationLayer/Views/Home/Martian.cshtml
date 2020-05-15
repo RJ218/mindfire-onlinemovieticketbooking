@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Martain</title>
+    <title>Nav Bar</title>
+    <link href="~/Content/css/MartianStyle.css" rel="stylesheet" />
+    
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <!--for icons-->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--cdn of css for slick-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+    <!--cdn for bootstrap-->
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <div class='container-fluid' id='container'>
+            <div id='top_page'>
+
+                <h1 id='movie_heading'>The Martian </h1>
+                <p>ENGLISH</p>
+                <button class='btn-dark' id='movie_button'>SCI-FI</button>
+
+                <p>15 May 2020</p>
+
+
+            </div>
+            <img id='poster' src="~/Images/image3.jpg" />
+            <i class="fa fa-thumbs-up" style='font-size:xx-larger; color: green; border-width: 1px;'></i>
+        </div>
+
+        <div class='jumbotron'
+             style='height: 100px; padding-left:0px !important;padding-right:0px !important;padding-left:0px !important;padding-top:10px !important'>
+            <div>
+              <button class='btn-danger btn-lg mt-3 mr-3' style='float: right;'><a href="/Home/BookNow" style="text-decoration:none;color:white;">Book Now</a></button>
+                <span id='count'>
+                    <i class="fa fa-thumbs-up"
+                       style='font-size:60px; color:green;border-style: solid; border-width: 1px; border-radius: 20%; padding: 5px;'></i><span id='cc'>2297</span>
+                </span>
+
+                <p class='interested'>INTERESTED</p>
+
+            </div>
+        </div>
+
+        <div id='navs container row '>
+            <div class="offset-md-2">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                           role="tab" aria-controls="nav-home" aria-selected="true">Summary</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                           role="tab" aria-controls="nav-profile" aria-selected="false">User Reviews</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                           role="tab" aria-controls="nav-contact" aria-selected="false">Critics</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active p-5" id="nav-home" role="tabpanel"
+                         aria-labelledby="nav-home-tab">
+                        <h3>SYNOPSIS</h3>
+                        <p>
+                            When astronauts blast off from the planet Mars, they leave behind Mark Watney (Matt Damon),
+                            presumed dead after a fierce storm. With only a meager amount of supplies, the stranded
+                            visitor
+                            must utilize his wits and spirit to find a way to survive on the hostile planet. Meanwhile,
+                            back
+                            on Earth, members of NASA and a team of international scientists work tirelessly to bring
+                            him
+                            home, while his crew mates hatch their own plan for a daring rescue mission.
+                        </p>
+                        <h3>Cast</h3>
+                        <div class="accordion mb-2" id="accordionExample">
+                            <div class="card">
+
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <span id='collapse_language'>
+                                            <i class="fa fa-angle-down"
+                                               style='font-size:xx-larger; padding-right: 8px;'></i>
+                                        </span>View cast
+                                    </button>
+                                </h2>
+
+                            </div>
+
+                            <div id="collapseOne" class="collapse " aria-labelledby="headingOne"
+                                 data-parent="#accordionExample">
+                                <div class="card-body ml-4">
+                                    <div class='row'>
+
+                                        <div class="card shadow cast mr-3">
+                                            <img class="card-img-top movie_img" src="" alt="Card image cap">
+
+                                            <p class="card_title">Matt Damon</p>
+
+
+                                        </div>
+                                        <div class="card shadow cast mr-3">
+                                            <img class="card-img-top movie_img" src="" alt="Card image cap">
+
+                                            <p class="card_title">Jessica Chastain</p>
+
+
+                                        </div>
+                                        <div class="card shadow cast mr-3">
+                                            <img class="card-img-top movie_img" src="" alt="Card image cap">
+
+                                            <p class="card_title">Kate Mara</p>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade ml-5" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        No users
+                        have reviewed this movie yet.
+                    </div>
+                    <div class="tab-pane fade ml-5" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        Sorry!
+                        None of the critics have had a chance to review this movie yet.
+                    </div>
+
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
