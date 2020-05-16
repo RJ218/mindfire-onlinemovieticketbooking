@@ -1,0 +1,526 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/IndexStyle.css" rel="stylesheet" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <!--for icons-->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--cdn of css for slick-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+    <!--cdn for bootstrap-->
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+    <body id="bb" style="background-color:#D3D3D3;">
+        <header style="min-height:'65px'; display: block;">
+            <nav id="navbar" class="navbar">
+                <div class="primary-header">
+                    <div class="header-inner">
+                        <!--Firstpart of navbar-->
+                        <div class="header-col header-col-1">
+                            <div class="brand">
+                                <!--BrandLogo-->
+                                <a class="logo" title="bookmyshow" href="#"><img src="~/images/book.png" /></a>
+                            </div>
+                        </div>
+                        <div class="header-col header-col-2">
+                            <span class="icon"></span><!--search icon to be inserted-->
+                            <input type="text" class="search" placeholder="Search for Movies,Events,Plays,Sports and Activities" name="text">
+                        </div>
+                        <nav class="header-col header-col-3">
+                            <ul>
+                                <li>
+                                    <!--first city selection-->
+                                    <a href="#" onclick="getCity()">NCR&nbsp;&nbsp;<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                                    <div id="mydiv">
+                                        <!--City selection dropdown-->
+                                        <div class="search-city">
+                                            <input type="text" id="search-citys" placeholder="Search for your city" name="text">
+                                        </div>
+                                        <div style="height: 10%;" id="city-head"><h4>Popular Cities</h4></div>
+                                        <div id="popularcities" style="height: 40%;margin: 25px 0;">
+                                            <ul id="icons">
+                                                <li id="_icon">
+                                                    <a href="#">
+                                                        <span><img id="1" src="" style="max-width:100%;max-height:100%;"></span>
+                                                        <div id="mum" style="color: black;font-size: 20px;">Mumbai</div>
+                                                    </a>
+                                                </li>
+                                                <li id="_icon">
+                                                    <a href="#">
+                                                        <span><img id="2" src="" style="max-width:100%;max-height:100%;"></span>
+                                                        <div id="ncr" style="color: black;font-size: 20px;">NCR</div>
+                                                    </a>
+                                                </li>
+                                                <li id="_icon">
+                                                    <a href="#">
+                                                        <span><img id="3" src="" style="max-width:100%;max-height:100%;"></span>
+                                                        <div id="bang" style="color: black;font-size: 20px;">Banglore</div>
+                                                    </a>
+                                                </li>
+                                                <li id="_icon">
+                                                    <a href="#">
+                                                        <span><img id="4" src="" style="max-width:100%;max-height:100%;"></span>
+                                                        <div id="hydra" style="color: black;font-size: 20px;">Hydrabad</div>
+                                                    </a>
+                                                </li>
+                                                <li id="_icon">
+                                                    <a href="#">
+                                                        <span><img id="5" src="" style="max-width:100%;max-height:100%;"></span>
+                                                        <div id="ahem" style="color: black;font-size: 20px;">Ahemdabad</div>
+                                                    </a>
+                                                </li>
+                                                <li id="_icon">
+                                                    <a href="#">
+                                                        <span><img id="6" src="" style="max-width:100%;max-height:100%;"></span>
+                                                        <div id="chan" style="color: black;font-size: 20px;">Chandigarh</div>
+                                                    </a>
+                                                </li>
+                                                <li id="_icon">
+                                                    <a href="#">
+                                                        <span><img id="7" src="" style="max-width:100%;max-height:100%;" /></span>
+                                                        <div id="chenn" style="color: black;font-size: 20px;">Chennia</div>
+                                                    </a>
+                                                </li>
+                                                <li id="_icon">
+                                                    <a href="#">
+                                                        <span><img id="8" src="" style="max-width:100%;max-height:100%;" /></span>
+                                                        <div id="pune" style="color: black;font-size: 20px;">Pune</div>
+                                                    </a>
+                                                </li>
+                                            </ul><!--icons of popular cities-->
+                                        </div><!--popularcities-->
+                                    </div>
+                                </li><!--city selection done-->
+                                <li>
+                                    <!--selection of language-->
+                                    <a href="#" onclick="getLang()">English&nbsp;&nbsp;<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                                    <div id="language">
+                                        <div id="select-lang" style="height:40%;background-color:#f1f1f1">
+                                            <div style="height: 10%;color:black;text-align:center;padding:15px 0;font-size:16px;" id="lang">Select Language</div>
+                                        </div>
+                                        <div style="height:30%" id="langop">
+                                            <ul id="options" style="margin-left: 0px !important;">
+                                                <li id="eng" style="text-align-last:left;">
+                                                    <a href="#"><div id="english" style="color: black;font-size: 20px;padding-top:25px!important">English</div></a>
+                                                </li>
+                                                <li id="hin">
+                                                    <a href="#"><div id="hindi" style="color: black;font-size: 20px;padding-top:25px!important">हिंदी</div></a>
+                                                </li>
+                                                <li id="mara" style="text-align-last:left;">
+                                                    <a href="#"><div id="marathi" style="color: black;font-size: 20px;padding-top:25px!important">मराठी</div></a>
+                                                </li>
+                                            </ul><!--end of options-->
+                                        </div>
+                                    </div>
+                                </li><!--lang selection done-->
+                                <li>
+                                    <!--signup-->
+                                    <a href="#" id="signup">Signup</a>
+                                </li><!--signup done-->
+                                <li>
+                                    <!--togglebtn-->
+                                    <span onclick="togglebtn()">&#9776;</span>
+                                </li><!--togglebtn done-->
+                            </ul><!--end of header-3 list-->
+                        </nav><!--end of header-3-col-->
+                    </div><!--inner header end-->
+                </div><!--primary header-->
+                <!--secondry header-->
+                <div class="primary-nav">
+                    <div class="header-inner">
+                        <!--left nav-->
+                        <div class="inner-nav left-nav">
+                            <ul>
+                                <li class="primary-menu">
+                                    <a href="/national-capital-region-ncr/movies" class="nav-link menu-item">Movies</a>
+                                </li>
+                                <li class="primary-menu">
+                                    <a href="#" class="nav-link menu-item">Events</a>
+                                </li>
+                                <li class="primary-menu">
+                                    <a href="#" class="nav-link menu-item">Plays</a>
+                                </li>
+                                <li class="primary-menu">
+                                    <a href="#" class="nav-link menu-item">Sports</a>
+                                </li>
+                                <li class="primary-menu">
+                                    <a href="#" class="nav-link menu-item">Activities</a>
+                                </li>
+                                <li class="primary-menu">
+                                    <a href="#" class="nav-link menu-item">Monuments</a>
+                                </li>
+                                <li class="primary-menu">
+                                    <a href="#" class="nav-link menu-item">Fanhood</a>
+                                </li>
+                                <li class="primary-menu">
+                                    <a href="#" class="nav-link menu-item">Buzz</a>
+                                </li>
+                            </ul>
+                        </div><!--end of left nav-->
+                        <!--right nav-->
+                        <div class="inner-nav right-nav">
+                            <ul>
+                                <li class="secondary-menu">
+                                    <a href="#" class="nav-link menu-item">Corporates</a>
+                                </li>
+                                <li class="secondary-menu">
+                                    <a href="#" class="nav-link menu-item">Offers</a>
+                                </li>
+                                <li class="secondary-menu">
+                                    <a href="#" class="nav-link menu-item">Gift Cards</a>
+                                </li>
+                            </ul>
+                        </div><!--end of right nav-->
+                    </div><!--header inner-->
+                </div><!--primary nav-->
+            </nav>
+        </header>
+        <!--slide-show-->
+        <div class="wrapper" style="width: 100%;height: 300px;background-color:#303c48ab;margin-top:10px">
+            <div class="containr" style="width: 100%;background-color:white">
+                <!--#616e7bab;-->
+                <div class="row slider" style="width:100%">
+                    <div class="col-md-12">
+                        <div class="details"><img src="" /><a href="#"></a></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="details"><img src="" /><a href="#"></a></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="details"><img src="" /><a href="#"></a></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="details"><img src="" /><a href="#"></a></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="details"><img src=""><a href="#"></a></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="details"><img src="" /><a href="#"></a></div>
+                    </div>
+                </div><!--row slider-->
+            </div><!--contanr-->
+        </div><!--end of slide show-->
+        <!--sidebar-->
+        <div id="sidebar">
+            <div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
+                <div class="profile-guest" style="display: flex;">
+                    <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
+                    <div class="profile-heading">Hey!</div>
+                    <div class="profile-login-container" style="background-color:white !important;">
+                        <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                        <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                        <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
+                            Login / Register
+                        </div>
+                    </div>
+                </div><!--end of profileguest-->
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li><a href="#"><div class="list-text">Notification</div></a></li>
+                    <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+                </ul>
+            </div>
+        </div><!--end of side bar-->
+        <!--rest of the body-->
+        <div style="height:500px;">
+            <div class="card-listing" style="width:300px;padding-left:600px !important;padding-right:20px !important;padding-top:50px !important;">
+                <div class="topical-banner">
+                    <div class="_topicalbanner">
+                        <img class="__poster-topical" src="https://in.bmscdn.com/m6/images/discovery/online_stream_desktop_iau7a.png" data-src="https://in.bmscdn.com/m6/images/discovery/online_stream_desktop_iau7a.png" data-mobile="" alt="">
+                        <div class="_topical-content">
+                            <span class="_topical-title" style="font-size:14px;">Enjoy events from the comfort of your home</span>
+                            <span class="_topical-subtitle" style="font-size:12px;"> Click to browse all live streaming events</span>
+                        </div>
+                        <div class="_topical-book-button"><a href="#" class="_topical-book-now" style="font-size:12px;">Book Now</a></div>
+                    </div>
+                </div><!--end of tropical banner-->
+                <div class="popular-listing popular-movies">
+                    <h2>Discover</h2>
+                    <h3></h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <img src="~/images/onlineeven.jpg" />
+                            </div>
+                            <div class="col">
+                                <img src="~/images/onlineplays.jpg" />
+                            </div>
+                        </div><!--end of row-->
+                    </div><!--end of container-->
+                </div><!--popula-listing popular movies-->
+            </div><!--card-listing-->
+            <!--sidebox-for movies-->
+            <div class="container" style="width:270px;position:absolute;top:-2px;padding-top:450px;padding-left:100px;">
+                <div class="sidebar-widget trending-searches">
+                    <div class="widget-title">
+                        <h3>Trending Searches</h3>
+                    </div>
+                    <div class="widget-list">
+                        <div class="widget-card">
+                            <a href="#">
+                                <div class="widget-content">
+                                    <h4>Black Widow</h4><p class="lang-eng">Movies</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="widget-card">
+                            <a href="#">
+                                <div class="widget-content">
+                                    <h4>Fast and Furious 9</h4>
+                                    <p class="lang-eng">Movies</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="widget-card">
+                            <a href="/national-capital-region-ncr/movies/street-dancer-3/ET00124186">
+                                <div class="widget-content">
+                                    <h4>Street Dancer 3</h4>
+                                    <p class="lang-eng">Movies</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="widget-card">
+                            <a href="#">
+                                <div class="widget-content">
+                                    <h4>Transporter 3</h4>
+                                    <p class="lang-eng">Movies</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="widget-card">
+                            <a href="#">
+                                <div class="widget-content">
+                                    <h4>Good Newwz</h4>
+                                    <p class="lang-eng">Movies</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div><!--widget-list-->
+                </div><!--sidebar-widget-->
+            </div><!--container-->
+        </div><!--rest of body-->
+        <!-- modal-section-->
+        <div class="bg-modal" style="width:100%!important;height:100vh;display:none;
+       justify-content:center;align-items:center; background-color:rgba(0,0,0,0.7);position:absolute;top:0;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 style="position:absolute;top:7px;">SignIn</h3>
+                    <h3 class="close" style="position:absolute;top:7px;right:14px">&times;</h3>
+                </div>
+                <img style="width:80px;height:80px;margin-left:40%;" src="~/images/icon.jpg" />
+                <form action="">
+                    <input type="text" placeholder="UserName" required />
+                    <input type="password" placeholder="Password" required />
+                    <a href="#" class="btn btn-primary  active" role="button" aria-pressed="true">Submit</a>
+                </form>
+            </div><!--modal-content-->
+        </div><!--bg-modal-->
+        <!-- Footer -->
+        <section id="footer">
+            <img style="height:40px;width:95px;" src="~/images/book.png" />
+            <div class="container">
+                <div class="row text-center text-xs-center text-sm-left text-md-left">
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <h5>Quick links</h5>
+                        <ul class="list-unstyled quick-links">
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <h5>Quick links</h5>
+                        <ul class="list-unstyled quick-links">
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <h5>Quick links</h5>
+                        <ul class="list-unstyled quick-links">
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                            <li><a href="#" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                        <ul class="list-unstyled list-inline social text-center">
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.fiverr.com/share/qb8D02" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                        <p class="h6">© All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Sunlimetech</a></p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </section>
+        <!-- ./Footer -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha256-NXRS8qVcmZ3dOv3LziwznUHPegFhPZ1F/4inU7uC8h0=" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+	 	$('.slider').slick({
+  dots: true,
+  infinite:true,
+  speed: 300,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+    autoplay: true,
+  autoplaySpeed: 2000,
+
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+	/*$('.slider').slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+});*/
+    /*	window.addEventListener('mouseup', function(event){
+           var vbox=document.getElementById('sidebar');
+           if(event.target !=vbox && event.target.parentNode !=vbox)
+           {
+           	vbox.style.display="none";
+           }
+      	});*/
+	 	function signup(){
+	 	    document.getElementById("signinpopup").style.display = "block";
+	 	}
+      	function togglebtn() {
+      		document.getElementById("sidebar").style.display="block";
+      		// body...
+      	}
+      	function getLang()
+      	{
+      		document.getElementById("language").style.display="block";
+      	}
+      	function getCity()
+      	{
+      		document.getElementById("mydiv").style.display="block";
+      	}
+      	function closebtn() {
+      	    document.getElementById("sidebar").style.display = "none";
+      	}
+      	document.getElementById('signup').addEventListener('click', function () {
+      	    document.querySelector('.bg-modal').style.display = 'flex';
+      	    document.getElementById('bb').style.overflow='hidden';
+      	});
+      	document.querySelector('.close').addEventListener('click', function () {
+      	    document.querySelector('.bg-modal').style.display = 'none';
+      	    document.getElementById('bb').style.overflow = 'visible';
+      	});
+      	window.addEventListener('mouseup', function(event){
+           var vbox=document.getElementById('mydiv');
+          var box=document.getElementById('search-citys');
+           var box1=document.getElementById('city-head');
+           var box2=document.getElementById('popularcities');
+           var box3=document.getElementById('icons');
+           var box4=document.getElementById('_icon');
+           var box5=document.getElementById('1');
+           var box6=document.getElementById('2');
+           var box7=document.getElementById('3');
+           var box8=document.getElementById('4');
+           var box9=document.getElementById('5');
+           var box10=document.getElementById('6');
+           var box11=document.getElementById('7');
+           var box12 = document.getElementById('8');
+           var box13 = document.getElementById('mum');
+           var box14 = document.getElementById('ncr');
+           var box15 = document.getElementById('bang');
+           var box16 = document.getElementById('hydra');
+           var box17 = document.getElementById('chenn');
+           var box18 = document.getElementById('chan');
+           var box19 = document.getElementById('pune');
+           var box20 = document.getElementById('ahem');
+           if(event.target !=vbox && event.target.parentNode !=vbox && event.target !=box && event.target !=box1 && event.target.parentNode != box1 && event.target !=box2 && event.target.parentNode !=box2  && event.target !=box3 && event.target.parentNode !=box3
+           	&& event.target != box4 && event.target.parentNode != box4 && event.target != box5 && event.target != box13 && event.target.parentNode != box13 && event.target != box14 && event.target.parentNode != box14
+            &&  event.target != box15 && event.target.parentNode != box15  && event.target != box16 && event.target.parentNode != box16 && event.target != box17 && event.target.parentNode != box17 &&
+            event.target != box18 && event.target.parentNode != box18 && event.target != box19 && event.target.parentNode != box19 && event.target != box20 && event.target.parentNode != box20 && event.target.parentNode != box5 && event.target != box6 && event.target.parentNode != box6 && event.target != box7 && event.target.parentNode != box7 && event.target != box8 && event.target.parentNode != box8 && event.target != box9 && event.target.parentNode != box9 && event.target != box10 && event.target.parentNode != box10 && event.target != box11 && event.target.parentNode != box11 && event.target != box12 && event.target.parentNode != box12)
+
+           	vbox.style.display="none";
+      	});
+      	window.addEventListener('mouseup', function (event) {
+      	    var item1 = document.getElementById('language');
+      	    var item2 = document.getElementById('select-lang');
+      	    var item3 = document.getElementById('langop');
+      	    var item4 = document.getElementById('eng');
+      	    var item5 = document.getElementById('english');
+      	    var item6 = document.getElementById('hin');
+      	    var item7 = document.getElementById('hindi');
+      	    var item8 = document.getElementById('mara');
+      	    var item9 = document.getElementById('marathi');
+
+
+      	    if (event.target != item1 && event.target.parentNode != item1 && event.target != item1 && event.target != item2
+                && event.target.parentNode != item2 && event.target != item3 && event.target.parentNode != item3 && event.target != item4
+                && event.target.parentNode != item4 && event.target != item5 && event.target.parentNode != item5 &&
+      	        event.target != item6 && event.target.parentNode != item6 && event.target != item7 && event.target.parentNode != item7 &&
+      	        event.target != item8 && event.target.parentNode != item8 && event.target != item9 && event.target.parentNode != item9)
+      	        item1.style.display = "none";
+
+      	});
+
+        </script>
+    </body>
+</html>

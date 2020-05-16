@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookMyShowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MovieTable">
+    <Key>
+      <PropertyRef Name="MovieId" />
+    </Key>
+    <Property Name="MovieId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="Trailer" Type="image" />
+  </EntityType>
+  <EntityType Name="Show">
+    <Key>
+      <PropertyRef Name="ShowId" />
+    </Key>
+    <Property Name="ShowId" Type="int" Nullable="false" />
+    <Property Name="MovieId" Type="int" Nullable="false" />
+    <Property Name="TheatreId" Type="int" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Theatre">
+    <Key>
+      <PropertyRef Name="TheatreId" />
+    </Key>
+    <Property Name="TheatreId" Type="int" Nullable="false" />
+    <Property Name="TheatreName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Pincode" Type="int" />
+  </EntityType>
+  <Association Name="FK_Show_MovieTable">
+    <End Role="MovieTable" Type="Self.MovieTable" Multiplicity="1" />
+    <End Role="Show" Type="Self.Show" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieTable">
+        <PropertyRef Name="MovieId" />
+      </Principal>
+      <Dependent Role="Show">
+        <PropertyRef Name="MovieId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Show_Theatre">
+    <End Role="Theatre" Type="Self.Theatre" Multiplicity="1" />
+    <End Role="Show" Type="Self.Show" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theatre">
+        <PropertyRef Name="TheatreId" />
+      </Principal>
+      <Dependent Role="Show">
+        <PropertyRef Name="TheatreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BookMyShowModelStoreContainer">
+    <EntitySet Name="MovieTable" EntityType="Self.MovieTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Show" EntityType="Self.Show" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Theatre" EntityType="Self.Theatre" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Show_MovieTable" Association="Self.FK_Show_MovieTable">
+      <End Role="MovieTable" EntitySet="MovieTable" />
+      <End Role="Show" EntitySet="Show" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Show_Theatre" Association="Self.FK_Show_Theatre">
+      <End Role="Theatre" EntitySet="Theatre" />
+      <End Role="Show" EntitySet="Show" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

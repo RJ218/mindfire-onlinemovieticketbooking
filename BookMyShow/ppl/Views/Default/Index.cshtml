@@ -1,0 +1,39 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <button type="button" id="btnGetEmp">GetEmpDetails</button>
+    <div class="emptable">
+
+    </div>
+    <script>
+        $("#btnGetEmp").click(() => {
+            $.ajax(
+                {
+                    type: "GET", url: "http://localhost:64810//api/Home", success: (response) => {
+                        for(var i=0;i<response.length;i++)
+                        {
+                            var br = response[i];
+                            var str = (i + 1);
+                            var  str1=br.DateTime;
+                            $(".emptable").append(str);
+                            $(".emptable").append(str1);
+                            $(".emptable").append("<br/>");
+                        }
+
+                    }, error: (err) => {
+                        alert(err);
+                        console.log(err);
+                    }
+                });
+        });
+    </script>
+</body>
+</html>
+
