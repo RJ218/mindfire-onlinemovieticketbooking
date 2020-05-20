@@ -88,3 +88,8 @@ D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\System.Web.Http.Owin.xml
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\obj\Debug\BookMyShowAppp.csprojResolveAssemblyReference.cache
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\obj\Debug\BookMyShowAppp.dll
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\obj\Debug\BookMyShowAppp.pdb
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\System.Web.Cors.dll
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\System.Web.Http.Cors.dll
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\System.Web.Http.Cors.xml
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\DataLayer.dll
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\DataLayer.pdb

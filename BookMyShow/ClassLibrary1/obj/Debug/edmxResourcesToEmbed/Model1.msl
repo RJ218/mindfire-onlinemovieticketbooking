@@ -1,6 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BookMyShowModelStoreContainer" CdmEntityContainer="BookMyShowEntities">
+  <EntityContainerMapping StorageEntityContainer="BookMyShowModelStoreContainer" CdmEntityContainer="BookMyShowEntities1">
+    <EntitySetMapping Name="Shows">
+      <EntityTypeMapping TypeName="BookMyShowModel.Show">
+        <MappingFragment StoreEntitySet="Show">
+          <ScalarProperty Name="ShowId" ColumnName="ShowId" />
+          <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+          <ScalarProperty Name="TheatreId" ColumnName="TheatreId" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Theatres">
+      <EntityTypeMapping TypeName="BookMyShowModel.Theatre">
+        <MappingFragment StoreEntitySet="Theatre">
+          <ScalarProperty Name="TheatreId" ColumnName="TheatreId" />
+          <ScalarProperty Name="TheatreName" ColumnName="TheatreName" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="BookMyShowModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TicketQuantity" ColumnName="TicketQuantity" />
+          <ScalarProperty Name="ShowId" ColumnName="ShowId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="MovieTables">
       <EntityTypeMapping TypeName="BookMyShowModel.MovieTable">
         <MappingFragment StoreEntitySet="MovieTable">
@@ -11,25 +44,25 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Shows">
-      <EntityTypeMapping TypeName="BookMyShowModel.Show">
-        <MappingFragment StoreEntitySet="Show">
-          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-          <ScalarProperty Name="TheatreId" ColumnName="TheatreId" />
-          <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+    <EntitySetMapping Name="Seats">
+      <EntityTypeMapping TypeName="BookMyShowModel.Seat">
+        <MappingFragment StoreEntitySet="Seat">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SeatNo" ColumnName="SeatNo" />
           <ScalarProperty Name="ShowId" ColumnName="ShowId" />
+          <ScalarProperty Name="SeatId" ColumnName="SeatId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Theatres">
-      <EntityTypeMapping TypeName="BookMyShowModel.Theatre">
-        <MappingFragment StoreEntitySet="Theatre">
-          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BookMyShowModel.User">
+        <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="TheatreName" ColumnName="TheatreName" />
-          <ScalarProperty Name="TheatreId" ColumnName="TheatreId" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -13,25 +13,29 @@
 
     </div>
     <script>
+       
         $("#btnGetEmp").click(() => {
+            var movieid = 2;
             $.ajax(
-                {
-                    type: "GET", url: "http://localhost:64810//api/Home", success: (response) => {
-                        for(var i=0;i<response.length;i++)
-                        {
-                            var br = response[i];
-                            var str = (i + 1);
-                            var  str1=br.DateTime;
-                            $(".emptable").append(str);
-                            $(".emptable").append(str1);
-                            $(".emptable").append("<br/>");
-                        }
+                   {
+                       type: "GET", url: "http://localhost:64810//api/Home?movieid="+movieid,
+                           
+                       success: (response) => {
+                           for (var i = 0; i < response.length; i++) {
+                               var br = response[i];
+                               var str = br.TheatreName;
+                               var str1 = br.DateTime;
+                               $(".emptable").append(str);
+                               $(".emptable").append(str1);
+                               $(".emptable").append("<br/>");
+                           }
+                       }
 
-                    }, error: (err) => {
-                        alert(err);
-                        console.log(err);
-                    }
-                });
+                       , error: (err) => {
+                           alert(err);
+                           console.log(err);
+                       }
+                   });
         });
     </script>
 </body>

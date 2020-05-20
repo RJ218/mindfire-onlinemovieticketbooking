@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BookMyShowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="BookingId" />
+    </Key>
+    <Property Name="BookingId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="ShowId" Type="int" />
+    <Property Name="TicketQuantity" Type="int" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
   <EntityType Name="MovieTable">
     <Key>
       <PropertyRef Name="MovieId" />
@@ -8,6 +18,15 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Category" Type="nvarchar" MaxLength="50" />
     <Property Name="Trailer" Type="image" />
+  </EntityType>
+  <EntityType Name="Seat">
+    <Key>
+      <PropertyRef Name="SeatId" />
+    </Key>
+    <Property Name="SeatId" Type="int" Nullable="false" />
+    <Property Name="ShowId" Type="int" />
+    <Property Name="SeatNo" Type="int" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Show">
     <Key>
@@ -29,6 +48,53 @@
     <Property Name="Address" Type="nvarchar(max)" />
     <Property Name="Pincode" Type="int" />
   </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="bigint" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_Booking_Show">
+    <End Role="Show" Type="Self.Show" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Show">
+        <PropertyRef Name="ShowId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="ShowId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seat_Show">
+    <End Role="Show" Type="Self.Show" Multiplicity="0..1" />
+    <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Show">
+        <PropertyRef Name="ShowId" />
+      </Principal>
+      <Dependent Role="Seat">
+        <PropertyRef Name="ShowId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Show_MovieTable">
     <End Role="MovieTable" Type="Self.MovieTable" Multiplicity="1" />
     <End Role="Show" Type="Self.Show" Multiplicity="*" />
@@ -54,9 +120,24 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="BookMyShowModelStoreContainer">
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MovieTable" EntityType="Self.MovieTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Show" EntityType="Self.Show" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Theatre" EntityType="Self.Theatre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Booking_Show" Association="Self.FK_Booking_Show">
+      <End Role="Show" EntitySet="Show" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_User" Association="Self.FK_Booking_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seat_Show" Association="Self.FK_Seat_Show">
+      <End Role="Show" EntitySet="Show" />
+      <End Role="Seat" EntitySet="Seat" />
+    </AssociationSet>
     <AssociationSet Name="FK_Show_MovieTable" Association="Self.FK_Show_MovieTable">
       <End Role="MovieTable" EntitySet="MovieTable" />
       <End Role="Show" EntitySet="Show" />
