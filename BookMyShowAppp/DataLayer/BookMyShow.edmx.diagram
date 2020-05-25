@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1f742fc3598a4065a2b91718fe00d430" Name="Diagram1">
+        <EntityTypeShape EntityType="BookMyShowModel.Booking" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookMyShowModel.MovieTable" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookMyShowModel.Seat" Width="1.5" PointX="8.625" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookMyShowModel.Show" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookMyShowModel.Theatre" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="BookMyShowModel.FK_Booking_Show" ManuallyRouted="false" />
+        <AssociationConnector Association="BookMyShowModel.FK_Show_MovieTable" ManuallyRouted="false" />
+        <AssociationConnector Association="BookMyShowModel.FK_Seat_Show" ManuallyRouted="false" />
+        <AssociationConnector Association="BookMyShowModel.FK_Show_Theatre" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

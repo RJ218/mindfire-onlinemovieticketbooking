@@ -1,0 +1,462 @@
+﻿@{ Layout = null;}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/css/IndexStyle.css" rel="stylesheet" />
+    <link href="~/Content/css/MoviePageStyle.css" rel="stylesheet" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <!--for icons-->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--cdn of css for slick-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+    <!--cdn for bootstrap-->
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body id="bb" onload="set_cards()" style="background-color:#D3D3D3;">
+   
+    <header style="min-height:'65px'; display: block;">
+        <nav id="navbar" class="navbar">
+            <div class="primary-header">
+                <div class="header-inner">
+                    <!--Firstpart of navbar-->
+                    <div class="header-col header-col-1">
+                        <div class="brand">
+                            <!--BrandLogo-->
+                            <a class="logo" title="bookmyshow" href="#"><img src="~/Images/book.png" /></a>
+                        </div>
+                    </div>
+                    <div class="header-col header-col-2">
+                        <span class="icon"></span><!--search icon to be inserted-->
+                        <input type="text" class="search" placeholder="Search for Movies,Events,Plays,Sports and Activities" name="text">
+                    </div>
+                    <nav class="header-col header-col-3">
+                        <ul>
+                            <li>
+                                <!--first city selection-->
+                                <a href="#" onclick="getCity()">NCR&nbsp;&nbsp;<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                                <div id="mydiv">
+                                    <!--City selection dropdown-->
+                                    <div class="search-city">
+                                        <input type="text" id="search-citys" placeholder="Search for your city" name="text">
+                                    </div>
+                                    <div style="height: 10%;" id="city-head"><h4>Popular Cities</h4></div>
+                                    <div id="popularcities" style="height: 40%;margin: 25px 0;">
+                                        <ul id="icons">
+                                            <li id="_icon">
+                                                <a href="#">
+                                                    <span><img id="1" src="~/Images/download.jpg" style="max-width:100%;max-height:100%;"></span>
+                                                    <div id="mum" style="color: black;font-size: 20px;">Mumbai</div>
+                                                </a>
+                                            </li>
+                                            <li id="_icon">
+                                                <a href="#">
+                                                    <span><img id="2" src="~/Images/download2.jpg" style="max-width:100%;max-height:100%;"></span>
+                                                    <div id="ncr" style="color: black;font-size: 20px;">NCR</div>
+                                                </a>
+                                            </li>
+                                            <li id="_icon">
+                                                <a href="#">
+                                                    <span><img id="3" src="~/Images/download3.png" style="max-width:100%;max-height:100%;"></span>
+                                                    <div id="bang" style="color: black;font-size: 20px;">Banglore</div>
+                                                </a>
+                                            </li>
+                                            <li id="_icon">
+                                                <a href="#">
+                                                    <span><img id="4" src="~/Images/download4.png" style="max-width:100%;max-height:100%;"></span>
+                                                    <div id="hydra" style="color: black;font-size: 20px;">Hydrabad</div>
+                                                </a>
+                                            </li>
+                                            <li id="_icon">
+                                                <a href="#">
+                                                    <span><img id="5" src="~/Images/download5.jpg" style="max-width:100%;max-height:100%;"></span>
+                                                    <div id="ahem" style="color: black;font-size: 20px;">Ahemdabad</div>
+                                                </a>
+                                            </li>
+                                            <li id="_icon">
+                                                <a href="#">
+                                                    <span><img id="6" src="~/Images/download7.png" style="max-width:100%;max-height:100%;"></span>
+                                                    <div id="chan" style="color: black;font-size: 20px;">Chandigarh</div>
+                                                </a>
+                                            </li>
+                                            <li id="_icon">
+                                                <a href="#">
+                                                    <span><img id="7" src="~/Images/download6.jpg" style="max-width:100%;max-height:100%;" /></span>
+                                                    <div id="chenn" style="color: black;font-size: 20px;">Chennia</div>
+                                                </a>
+                                            </li>
+                                            <li id="_icon">
+                                                <a href="#">
+                                                    <span><img id="8" src="~/Images/download8.png" style="max-width:100%;max-height:100%;" /></span>
+                                                    <div id="pune" style="color: black;font-size: 20px;">Pune</div>
+                                                </a>
+                                            </li>
+                                        </ul><!--icons of popular cities-->
+                                    </div><!--popularcities-->
+                                </div>
+                            </li><!--city selection done-->
+                            <li>
+                                <!--selection of language-->
+                                <a href="#" onclick="getLang()">English&nbsp;&nbsp;<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                                <div id="language">
+                                    <div id="select-lang" style="height:40%;background-color:#f1f1f1">
+                                        <div style="height: 10%;color:black;text-align:center;padding:15px 0;font-size:16px;" id="lang">Select Language</div>
+                                    </div>
+                                    <div style="height:30%" id="langop">
+                                        <ul id="options" style="margin-left: 0px !important;">
+                                            <li id="eng" style="text-align-last:left;">
+                                                <a href="#"><div id="english" style="color: black;font-size: 20px;padding-top:25px!important">English</div></a>
+                                            </li>
+                                            <li id="hin">
+                                                <a href="#"><div id="hindi" style="color: black;font-size: 20px;padding-top:25px!important">हिंदी</div></a>
+                                            </li>
+                                            <li id="mara" style="text-align-last:left;">
+                                                <a href="#"><div id="marathi" style="color: black;font-size: 20px;padding-top:25px!important">मराठी</div></a>
+                                            </li>
+                                        </ul><!--end of options-->
+                                    </div>
+                                </div>
+                            </li><!--lang selection done-->
+                            <li>
+                                <!--signup-->
+                                <a href="#" id="signup">Signup</a>
+                            </li><!--signup done-->
+                            <li>
+                                <!--togglebtn-->
+                                <span onclick="togglebtn()">&#9776;</span>
+                            </li><!--togglebtn done-->
+                        </ul><!--end of header-3 list-->
+                    </nav><!--end of header-3-col-->
+                </div><!--inner header end-->
+            </div><!--primary header-->
+            <!--secondry header-->
+            <div class="primary-nav">
+                <div class="header-inner">
+                    <!--left nav-->
+                    <div class="inner-nav left-nav">
+                        <ul>
+                            <li class="primary-menu">
+                                <a href="/Home/MoviePage" class="nav-link menu-item">Movies</a>
+                            </li>
+                            <li class="primary-menu">
+                                <a href="#" class="nav-link menu-item">Events</a>
+                            </li>
+                            <li class="primary-menu">
+                                <a href="#" class="nav-link menu-item">Plays</a>
+                            </li>
+                            <li class="primary-menu">
+                                <a href="#" class="nav-link menu-item">Sports</a>
+                            </li>
+                            <li class="primary-menu">
+                                <a href="#" class="nav-link menu-item">Activities</a>
+                            </li>
+                            <li class="primary-menu">
+                                <a href="#" class="nav-link menu-item">Monuments</a>
+                            </li>
+                            <li class="primary-menu">
+                                <a href="#" class="nav-link menu-item">Fanhood</a>
+                            </li>
+                            <li class="primary-menu">
+                                <a href="#" class="nav-link menu-item">Buzz</a>
+                            </li>
+                        </ul>
+                    </div><!--end of left nav-->
+                    <!--right nav-->
+                    <div class="inner-nav right-nav">
+                        <ul>
+                            <li class="secondary-menu">
+                                <a href="#" class="nav-link menu-item">Corporates</a>
+                            </li>
+                            <li class="secondary-menu">
+                                <a href="#" class="nav-link menu-item">Offers</a>
+                            </li>
+                            <li class="secondary-menu">
+                                <a href="#" class="nav-link menu-item">Gift Cards</a>
+                            </li>
+                        </ul>
+                    </div><!--end of right nav-->
+                </div><!--header inner-->
+            </div><!--primary nav-->
+        </nav>
+    </header>
+    <div class='container-fluid'>
+        <div class='jumbotron'>
+            <p>
+                <span id='movies_heading'>Upcoming Movies</span> <span class='coming_soon'>now showing</span> <span class='coming_soon'>coming soon</span> <span class='coming_soon'>Exclusive</span>
+            </p>
+
+            <div class='row'>
+                <div class='col-md-2 offset-md-1'>
+                    <div class="accordion mb-2" id="accordionExample">
+                        <div class="card">
+
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                    <span id='collapse_language'> <i class="fa fa-angle-down" style='font-size:xx-larger; padding-right: 8px;'></i> </span>Select Language
+                                </button>
+                            </h2>
+
+                        </div>
+
+                        <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body ml-4">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" onchange="set_card_lang()" >
+                                <label class="form-check-label" for="exampleCheck1">Hindi</label><br>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+                                <label class="form-check-label" for="exampleCheck1">English</label><br>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Punjabi</label><br>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Tamil</label><br>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Telegu</label><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                    <span id='collapse_genre'> <i class="fa fa-angle-down" style='font-size:xx-larger; padding-right: 8px;'></i></span>Genre
+                                </button>
+                            </h2>
+
+                        </div>
+
+                        <div id="collapseTwo" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body ml-4">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Action</label><br>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Romance</label><br>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Thriller</label><br>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Horror</label><br>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Sci-Fi</label><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-md-9 '>
+
+                    <div class='row  mb-4'>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary button'>2020</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary'>2021</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary'>2022</button></div>
+                    </div>
+                    <div class='row  mb-4'>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary disabled'>JAN</button></div>
+                        <div class='col-md-1'>
+                            <button class='btn btn-sm btn-light btn-outline-primary disabled '>FEB</button>
+                        </div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary disabled'>MAR</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary disabled'>APR</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>MAY</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>JUN</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>JUL</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary'>AUG</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>SEP</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>OCT</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>NOV</button></div>
+                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>DEC</button></div>
+
+                    </div>
+                    <div class=' row mb-4 ' id='movies_row'>
+                     
+                    </div>
+
+
+                
+
+
+                  
+                </div>
+            </div></div></div>
+
+
+            <script>
+                var card_info = [];
+                function set_cards(...para) {
+                    $.ajax(
+                        fetch("http://localhost:51059/api/GetInfo", {
+                            method: "GET"
+
+                        })
+                            .then(res => res.json())
+                            .then(result => {
+                                //alert('api');
+                                card_info = result;
+                                console.log(card_info);
+
+                            }).then(display => {
+                                // console.log(card_info)
+                                console.log(para)
+                                for (let i = 0; i < card_info.length; i++) {
+                                    var url = "http://localhost:60564/Home/MovieInformation?movieid=" + card_info[i].MovieId;
+                                    document.getElementById('movies_row').innerHTML += `<div class=' col-md-3 mr-5'>
+                            <div class="card" onclick='window.location.href="${url}";' shadow mb-4 " id=${card_info[i].MovieId} style="width: 18rem;">
+                                <img class="card-img-top movie_img" src=${card_info[i].ImageAddress}
+                                     alt="Card image cap">
+                                <div class="card-body card_body">
+                                    <p class="card_title">
+                                        <i class="fa fa-thumbs-up"
+                                           style='font-size:xx-larger; padding-right: 8px;'></i>${card_info[i].Rating} ${card_info[i].MovieName}
+                                    </p>
+                                    <p class='card_text'>${card_info[i].ReleaseDate} | ${card_info[i].Language}</p>
+                                </div>
+                            </div>
+                        </div>`
+                                }
+
+                            })
+
+                    )
+                }
+                function set_card_lang() {
+                    alert('select')
+                    console.log(card_info)
+                }
+                
+
+                function signup() {
+                    document.getElementById("signinpopup").style.display = "block";
+                }
+                function togglebtn() {
+                    document.getElementById("sidebar").style.display = "block";
+                    // body...
+                }
+                function getLang() {
+                    document.getElementById("language").style.display = "block";
+                }
+                function getCity() {
+                    document.getElementById("mydiv").style.display = "block";
+                }
+                function closebtn() {
+                    document.getElementById("sidebar").style.display = "none";
+                }
+                var t1 = document.getElementById('signup');
+                if (t1) {
+                    addEventListener('click', function () {
+                        document.querySelector('.bg-modal').style.display = 'flex';
+                        document.getElementById('bb').style.overflow = 'hidden';
+                    });
+                }
+                var t2 = document.querySelector('.close');
+                if (t2) {
+                    addEventListener('click', function () {
+                        document.querySelector('.bg-modal').style.display = 'none';
+                        document.getElementById('bb').style.overflow = 'visible';
+                    });
+                }
+                window.addEventListener('mouseup', function (event) {
+                    var vbox = document.getElementById('mydiv');
+                    var box = document.getElementById('search-citys');
+                    var box1 = document.getElementById('city-head');
+                    var box2 = document.getElementById('popularcities');
+                    var box3 = document.getElementById('icons');
+                    var box4 = document.getElementById('_icon');
+                    var box5 = document.getElementById('1');
+                    var box6 = document.getElementById('2');
+                    var box7 = document.getElementById('3');
+                    var box8 = document.getElementById('4');
+                    var box9 = document.getElementById('5');
+                    var box10 = document.getElementById('6');
+                    var box11 = document.getElementById('7');
+                    var box12 = document.getElementById('8');
+                    var box13 = document.getElementById('mum');
+                    var box14 = document.getElementById('ncr');
+                    var box15 = document.getElementById('bang');
+                    var box16 = document.getElementById('hydra');
+                    var box17 = document.getElementById('chenn');
+                    var box18 = document.getElementById('chan');
+                    var box19 = document.getElementById('pune');
+                    var box20 = document.getElementById('ahem');
+                    if (event.target != vbox && event.target.parentNode != vbox && event.target != box && event.target != box1 && event.target.parentNode != box1 && event.target != box2 && event.target.parentNode != box2 && event.target != box3 && event.target.parentNode != box3
+                    && event.target != box4 && event.target.parentNode != box4 && event.target != box5 && event.target != box13 && event.target.parentNode != box13 && event.target != box14 && event.target.parentNode != box14
+                    && event.target != box15 && event.target.parentNode != box15 && event.target != box16 && event.target.parentNode != box16 && event.target != box17 && event.target.parentNode != box17 &&
+                    event.target != box18 && event.target.parentNode != box18 && event.target != box19 && event.target.parentNode != box19 && event.target != box20 && event.target.parentNode != box20 && event.target.parentNode != box5 && event.target != box6 && event.target.parentNode != box6 && event.target != box7 && event.target.parentNode != box7 && event.target != box8 && event.target.parentNode != box8 && event.target != box9 && event.target.parentNode != box9 && event.target != box10 && event.target.parentNode != box10 && event.target != box11 && event.target.parentNode != box11 && event.target != box12 && event.target.parentNode != box12)
+
+                        vbox.style.display = "none";
+                });
+                window.addEventListener('mouseup', function (event) {
+                    var item1 = document.getElementById('language');
+                    var item2 = document.getElementById('select-lang');
+                    var item3 = document.getElementById('langop');
+                    var item4 = document.getElementById('eng');
+                    var item5 = document.getElementById('english');
+                    var item6 = document.getElementById('hin');
+                    var item7 = document.getElementById('hindi');
+                    var item8 = document.getElementById('mara');
+                    var item9 = document.getElementById('marathi');
+
+
+                    if (event.target != item1 && event.target.parentNode != item1 && event.target != item1 && event.target != item2
+                    && event.target.parentNode != item2 && event.target != item3 && event.target.parentNode != item3 && event.target != item4
+                    && event.target.parentNode != item4 && event.target != item5 && event.target.parentNode != item5 &&
+                    event.target != item6 && event.target.parentNode != item6 && event.target != item7 && event.target.parentNode != item7 &&
+                    event.target != item8 && event.target.parentNode != item8 && event.target != item9 && event.target.parentNode != item9)
+                        item1.style.display = "none";
+
+                });
+
+                $('#collapseOne').on('shown.bs.collapse', function () {
+
+                    document.getElementById('collapse_language').innerHTML = '<i class="fa fa-angle-up" style="font-size:xx-larger; padding-right: 8px;  "></i>';
+
+
+
+                })
+                $('#collapseOne').on('hidden.bs.collapse', function () {
+
+                    document.getElementById('collapse_language').innerHTML = '<i class="fa fa-angle-down" style="font-size:xx-larger; padding-right: 8px;"></i>';
+
+
+
+                })
+
+                $('#collapseTwo').on('shown.bs.collapse', function () {
+
+                    document.getElementById('collapse_genre').innerHTML = '<i class="fa fa-angle-up" style="font-size:xx-larger; padding-right: 8px;  "></i>';
+
+
+
+                })
+                $('#collapseTwo').on('hidden.bs.collapse', function () {
+
+                    document.getElementById('collapse_genre').innerHTML = '<i class="fa fa-angle-down" style="font-size:xx-larger; padding-right: 8px;"></i>';
+
+
+
+                })
+
+
+              
+             
+                   
+                   
+                
+
+
+            </script>
+</body>
+</html>
