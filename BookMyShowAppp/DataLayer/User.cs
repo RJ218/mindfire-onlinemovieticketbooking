@@ -21,8 +21,9 @@ namespace DataLayer
         }
     
         public int UserId { get; set; }
-        public string Name { get; set; }
-        public long MoblieNo { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public Nullable<long> MobileNo { get; set; }
         public string EmailId { get; set; }
         public string Address { get; set; }
     

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@{ Layout = null;}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -26,7 +27,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
-<body id="bb" style="background-color:#D3D3D3;">
+<body id="bb" onload="set_cards()" style="background-color:#D3D3D3;">
+
     <header style="min-height:'65px'; display: block;">
         <nav id="navbar" class="navbar">
             <div class="primary-header">
@@ -213,7 +215,7 @@
 
                         <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body ml-4">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" onchange="set_card_lang()">
                                 <label class="form-check-label" for="exampleCheck1">Hindi</label><br>
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">English</label><br>
@@ -280,139 +282,64 @@
 
                     </div>
                     <div class=' row mb-4 ' id='movies_row'>
-                        <div class=' col-md-3 mr-5'>
-                            <div class="card shadow " style="width: 18rem;">
-                                <img class="card-img-top movie_img" src="~/Images/image6.jpg"
-                                     alt="Card image cap">
-                                <div class="card-body card_body">
-                                    <p class="card_title">
-                                        <i class="fa fa-thumbs-up"
-                                           style='font-size:xx-larger; padding-right: 8px;'></i>824 Angrezi Medium
-                                    </p>
-                                    <p class='card_text'>8 May | Hindi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-md-3 mr-5 ml-5'>
-                            <div class="card shadow" style="width: 18rem;">
-                                <img class="card-img-top movie_img" src="~/Images/image1.jpg"
-                                     alt="Card image cap">
-                                <div class="card-body card_body">
-                                    <p class="card_title">
-                                        <i class="fa fa-thumbs-up"
-                                           style='font-size:xx-larger; padding-right: 8px;'></i>824 Angrezi Medium
-                                    </p>
-                                    <p class='card_text'>8 May | Hindi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-md-3 ml-5'>
-                            <div class="card shadow" style="width: 18rem;">
-                                <img class="card-img-top movie_img " src="~/Images/image1.jpg"
-                                     alt="Card image cap">
-                                <div class="card-body card_body">
-                                    <p class="card_title">
-                                        <i class="fa fa-thumbs-up"
-                                           style='font-size:xx-larger; padding-right: 8px;'></i>824 Angrezi Medium
-                                    </p>
-                                    <p class='card_text'>8 May | Hindi</p>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
 
-                    <div class=' row mb-4 ' id='movies_row'>
-                        <div class=' col-md-3 mr-5'>
-                            <div class="card shadow" style="width: 18rem;">
-                                <a href="/Home/Martian">
-                                    <img class="card-img-top movie_img" src="~/Images/image3.jpg"
-                                         alt="Card image cap">
-                                </a>
-                                <div class="card-body card_body">
-                                    <p class="card_title">
-                                        <i class="fa fa-thumbs-up"
-                                           style='font-size:xx-larger; padding-right: 8px;'></i>824 Angrezi Medium
-                                    </p>
-                                    <p class='card_text'>8 May | Hindi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-md-3 mr-5 ml-5'>
-                            <div class="card shadow " style="width: 18rem;">
-                                <img class="card-img-top movie_img" src="~/Images/image3.jpg"
-                                     alt="Card image cap">
-                                <div class="card-body card_body">
-                                    <p class="card_title">
-                                        <i class="fa fa-thumbs-up"
-                                           style='font-size:xx-larger; padding-right: 8px;'></i>824 Angrezi Medium
-                                    </p>
-                                    <p class='card_text'>8 May | Hindi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-md-3 ml-5'>
-                            <div class="card shadow" style="width: 18rem;">
-                                <img class="card-img-top movie_img" src="~/Images/image4.jpg"
-                                     alt="Card image cap">
-                                <div class="card-body card_body">
-                                    <p class="card_title">
-                                        <i class="fa fa-thumbs-up"
-                                           style='font-size:xx-larger; padding-right: 8px;'></i>824 Angrezi Medium
-                                    </p>
-                                    <p class='card_text'>8 May | Hindi</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
-                    <div class=' row mb-4 ' id='movies_row'>
-                        <div class=' col-md-3 mr-5'>
-                            <div class="card shadow" style="width: 18rem;">
-                                <img class="card-img-top movie_img" src="~/Images/image2.jpg"
-                                     alt="Card image cap">
-                                <div class="card-body card_body">
-                                    <p class="card_title">
-                                        <i class="fa fa-thumbs-up"
-                                           style='font-size:xx-larger; padding-right: 8px;'></i>824 Angrezi Medium
-                                    </p>
-                                    <p class='card_text'>8 May | Hindi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-md-3 mr-5 ml-5'>
-                            <div class="card shadow" style="width: 18rem;">
-                                <img class="card-img-top movie_img" src="~/Images/image1.jpg"
-                                     alt="Card image cap">
-                                <div class="card-body card_body">
-                                    <p class="card_title">
-                                        <i class="fa fa-thumbs-up"
-                                           style='font-size:xx-larger; padding-right: 8px;'></i>824 Angrezi Medium
-                                    </p>
-                                    <p class='card_text'>8 May | Hindi</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-md-3 ml-5'>
-                            <div class="card shadow" style="width: 18rem;">
-                                <img class="card-img-top movie_img" src="~/Images/image5.jpg"
-                                     alt="Card image cap">
-                                <div class="card-body card_body">
-                                    <p class="card_title">
-                                        <i class="fa fa-thumbs-up"
-                                           style='font-size:xx-larger; padding-right: 8px;'></i>824 Angrezi Medium
-                                    </p>
-                                    <p class='card_text'>8 May | Hindi</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
+        </div>
+    </div>
 
 
-            <script>
+    <script>
+                var card_info = [];
+                function set_cards(...para) {
+                    $.ajax(
+                        fetch("http://localhost:60562//api/GetInfo", {
+                            method: "GET"
+
+                        })
+                            .then(res => res.json())
+                            .then(result => {
+                                //alert('api');
+                                card_info = result;
+                                console.log(card_info);
+
+                            }).then(display => {
+                                // console.log(card_info)
+                                console.log(para)
+                                for (let i = 0; i < card_info.length; i++) {
+                                    var url = "http://localhost:60564/Home/MovieInformation?movieid=" + card_info[i].MovieId;
+                                    document.getElementById('movies_row').innerHTML += `<div class=' col-md-3 mr-5'>
+                            <div class="card" onclick='window.location.href="${url}";' shadow mb-4 " id=${card_info[i].MovieId} style="width: 18rem;">
+                                <img class="card-img-top movie_img" src=${card_info[i].ImageAddress}
+                                     alt="Card image cap">
+                                <div class="card-body card_body">
+                                    <p class="card_title">
+                                        <i class="fa fa-thumbs-up"
+                                           style='font-size:xx-larger; padding-right: 8px;'></i>${card_info[i].Rating} ${card_info[i].MovieName}
+                                    </p>
+                                    <p class='card_text'>${card_info[i].ReleaseDate} | ${card_info[i].Language}</p>
+                                </div>
+                            </div>
+                        </div>`
+                                }
+
+                            })
+
+                    )
+                }
+                function set_card_lang() {
+                    alert('select')
+                    console.log(card_info)
+                }
+
+
                 function signup() {
                     document.getElementById("signinpopup").style.display = "block";
                 }
@@ -429,14 +356,20 @@
                 function closebtn() {
                     document.getElementById("sidebar").style.display = "none";
                 }
-                document.getElementById('signup').addEventListener('click', function () {
-                    document.querySelector('.bg-modal').style.display = 'flex';
-                    document.getElementById('bb').style.overflow = 'hidden';
-                });
-                document.querySelector('.close').addEventListener('click', function () {
-                    document.querySelector('.bg-modal').style.display = 'none';
-                    document.getElementById('bb').style.overflow = 'visible';
-                });
+                var t1 = document.getElementById('signup');
+                if (t1) {
+                    addEventListener('click', function () {
+                        document.querySelector('.bg-modal').style.display = 'flex';
+                        document.getElementById('bb').style.overflow = 'hidden';
+                    });
+                }
+                var t2 = document.querySelector('.close');
+                if (t2) {
+                    addEventListener('click', function () {
+                        document.querySelector('.bg-modal').style.display = 'none';
+                        document.getElementById('bb').style.overflow = 'visible';
+                    });
+                }
                 window.addEventListener('mouseup', function (event) {
                     var vbox = document.getElementById('mydiv');
                     var box = document.getElementById('search-citys');
@@ -517,6 +450,15 @@
 
 
                 })
-            </script>
+
+
+
+
+
+
+
+
+
+    </script>
 </body>
 </html>

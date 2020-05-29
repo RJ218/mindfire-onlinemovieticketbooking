@@ -13,5 +13,9 @@ namespace ppl.Controllers
         {
             return View();
         }
+        public ActionResult Check()
+        {
+            return View();
+        }
     }
 }

@@ -18,19 +18,14 @@ namespace DataLayer
         public Show()
         {
             this.Bookings = new HashSet<Booking>();
-            this.Seats = new HashSet<Seat>();
         }
     
         public int ShowId { get; set; }
-        public int TheatreId { get; set; }
-        public int MovieId { get; set; }
-        public System.DateTime DateTime { get; set; }
+        public Nullable<int> TheatreId { get; set; }
+        public Nullable<System.DateTime> DateTime { get; set; }
+        public Nullable<int> MovieId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
-        public virtual MovieTable MovieTable { get; set; }
-        public virtual MovieTable MovieTable1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Seat> Seats { get; set; }
     }
 }

@@ -18,17 +18,19 @@ namespace DataLayer
         public MovieTable()
         {
             this.Shows = new HashSet<Show>();
-            this.Shows1 = new HashSet<Show>();
         }
     
         public int MovieId { get; set; }
-        public string Name { get; set; }
         public string Category { get; set; }
-        public byte[] Trailer { get; set; }
+        public string Trailer { get; set; }
+        public string MovieName { get; set; }
+        public string ReleaseDate { get; set; }
+        public string Language { get; set; }
+        public int Rating { get; set; }
+        public string ImageAddress { get; set; }
+        public string Synopsis { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Show> Shows { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Show> Shows1 { get; set; }
     }
 }

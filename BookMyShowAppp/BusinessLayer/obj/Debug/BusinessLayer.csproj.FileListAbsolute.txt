@@ -1,0 +1,13 @@
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\DataLayer.dll
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\EntityFramework.dll
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\DataLayer.pdb
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\EntityFramework.xml
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\AutoMapper.dll
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\DTO.dll
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\AutoMapper.xml
+D:\Projects\WFormCP\BookMyShowAppp\BusinessLayer\bin\Debug\DTO.pdb

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DataLayer;
 
 namespace PresentationLayer.Controllers
 {
@@ -16,11 +17,18 @@ namespace PresentationLayer.Controllers
         {
             return View();
         }
-        public ActionResult Martian()
-        { return View();
+        public ActionResult MovieInformation(int Movieid)
+        {
+            ViewData["movieid"] = Movieid;
+            return View();
         }
-        public ActionResult BookNow()
+       /* public ActionResult Martian()
         { return View();
+        }*/
+        public ActionResult BookNow()//common page
+        {
+            
+            return View();
         }
         public ActionResult BookSeats()
         { return View(); }

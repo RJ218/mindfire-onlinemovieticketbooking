@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Check</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+    <script>
+        function passid()
+        {
+            var movieid = $("h1").attr("id");
+            localStorage.setItem("movieval", movieid);
+            
+        }
+    </script>
+</head>
+<body>
+    <form action="/Default/Index">
+        <h1 id="2">1</h1>
+        <button onclick="passid()">udktc</button>
+    </form>
+    <script src="~/Scripts/JavaScript.js"></script>
+</body>
+</html>

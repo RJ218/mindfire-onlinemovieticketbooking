@@ -85,7 +85,6 @@ D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\Microsoft.Owin.Security.Go
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\System.Web.Http.Owin.xml
-D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\obj\Debug\BookMyShowAppp.csprojResolveAssemblyReference.cache
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\obj\Debug\BookMyShowAppp.dll
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\obj\Debug\BookMyShowAppp.pdb
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\System.Web.Cors.dll
@@ -93,3 +92,10 @@ D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\System.Web.Http.Cors.dll
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\System.Web.Http.Cors.xml
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\DataLayer.dll
 D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\DataLayer.pdb
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\BusinessLayer.dll
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\DTO.dll
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\AutoMapper.dll
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\BusinessLayer.pdb
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\DTO.pdb
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\bin\AutoMapper.xml
+D:\Projects\WFormCP\BookMyShowAppp\BookMyShowAppp\obj\Debug\BookMyShowAppp.csprojResolveAssemblyReference.cache

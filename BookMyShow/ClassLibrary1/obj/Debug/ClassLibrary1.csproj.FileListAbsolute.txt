@@ -17,4 +17,3 @@ C:\Users\Nupur bhaat\Desktop\bookmyshow\Nupur\mindfire-onlinemovieticketbooking\
 C:\Users\Nupur bhaat\Desktop\bookmyshow\Nupur\mindfire-onlinemovieticketbooking\BookMyShow\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Nupur bhaat\Desktop\bookmyshow\Nupur\mindfire-onlinemovieticketbooking\BookMyShow\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\Nupur bhaat\Desktop\bookmyshow\Nupur\mindfire-onlinemovieticketbooking\BookMyShow\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
-C:\Users\Nupur bhaat\Desktop\bookmyshow\Nupur\mindfire-onlinemovieticketbooking\BookMyShow\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache

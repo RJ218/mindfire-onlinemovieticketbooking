@@ -15,12 +15,10 @@ namespace DataLayer
     public partial class Booking
     {
         public int BookingId { get; set; }
-        public int UserId { get; set; }
-        public int ShowId { get; set; }
+        public Nullable<int> UserId { get; set; }
         public int TicketQuantity { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-    
-        public virtual Show Show { get; set; }
-        public virtual User User { get; set; }
+        public Nullable<int> ShowId { get; set; }
+        public Nullable<int> SeatId { get; set; }
     }
 }

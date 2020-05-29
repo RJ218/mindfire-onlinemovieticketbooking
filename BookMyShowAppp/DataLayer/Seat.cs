@@ -14,11 +14,18 @@ namespace DataLayer
     
     public partial class Seat
     {
-        public int SeatId { get; set; }
-        public int ShowId { get; set; }
-        public int SeatNo { get; set; }
-        public string Status { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Seat()
+        {
+            this.Bookings = new HashSet<Booking>();
+        }
     
-        public virtual Show Show { get; set; }
+        public int SeatId { get; set; }
+        public Nullable<int> TheatreId { get; set; }
+        public Nullable<int> SeatNo { get; set; }
+    
+        public virtual Theatre Theatre { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Booking> Bookings { get; set; }
     }
 }

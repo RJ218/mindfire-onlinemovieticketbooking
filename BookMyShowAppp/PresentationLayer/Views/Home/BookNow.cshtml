@@ -1,18 +1,37 @@
 ﻿
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>BookNow</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+   <style>
+.cityLink {
+    color: red;
+}
+.cityLink.active {
+    color: green;
+}
+    </style>
+
 </head>
-<body>
-    <div> 
-        <button><a href="/Home/BookSeats">Select Seats</a></button>
-    </div>
+<body style="background-color:lightblue">
+        <div id="emptable">
+
+        </div>
+       <script src="~/Scripts/BookNowJS.js"></script>
+      <!--  <button onclick="ff()">cgd</button>
+        <div id="name"></div>
+
+        <script>
+        function ff()
+        {
+            document.getElementById("name").innerHTML = localStorage.getItem("local");
+        }
+        </script>-->
+            <button><a href="/Home/BookSeats" id="btn">Select Seats</a></button>     
+   
+      
 </body>
 </html>
