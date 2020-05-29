@@ -85,6 +85,9 @@
     <Compile Include="Theatre.cs">
       <DependentUpon>BookMyShow.tt</DependentUpon>
     </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>BookMyShow.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

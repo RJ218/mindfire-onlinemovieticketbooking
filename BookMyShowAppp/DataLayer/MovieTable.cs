@@ -14,6 +14,12 @@ namespace DataLayer
     
     public partial class MovieTable
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MovieTable()
+        {
+            this.Shows = new HashSet<Show>();
+        }
+    
         public int MovieId { get; set; }
         public string Category { get; set; }
         public string Trailer { get; set; }
@@ -23,5 +29,8 @@ namespace DataLayer
         public int Rating { get; set; }
         public string ImageAddress { get; set; }
         public string Synopsis { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Show> Shows { get; set; }
     }
 }

@@ -9,6 +9,7 @@
     <Property Name="ShowId" Type="Int32" Nullable="false" />
     <Property Name="TicketQuantity" Type="Int32" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Show" Relationship="Self.FK_Booking_Show" FromRole="Booking" ToRole="Show" />
   </EntityType>
   <EntityType Name="MovieTable">
     <Key>
@@ -23,6 +24,7 @@
     <Property Name="Rating" Type="Int32" Nullable="false" />
     <Property Name="ImageAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Synopsis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Shows" Relationship="Self.FK_Show_MovieTable" FromRole="MovieTable" ToRole="Show" />
   </EntityType>
   <EntityType Name="Seat">
     <Key>
@@ -32,6 +34,7 @@
     <Property Name="ShowId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="RowNo" Type="Int32" Nullable="false" />
     <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Show" Relationship="Self.FK_Seat_Show" FromRole="Seat" ToRole="Show" />
   </EntityType>
   <EntityType Name="Show">
     <Key>
@@ -41,6 +44,10 @@
     <Property Name="MovieId" Type="Int32" Nullable="false" />
     <Property Name="TheatreId" Type="Int32" Nullable="false" />
     <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_Show" FromRole="Show" ToRole="Booking" />
+    <NavigationProperty Name="MovieTable" Relationship="Self.FK_Show_MovieTable" FromRole="Show" ToRole="MovieTable" />
+    <NavigationProperty Name="Seat" Relationship="Self.FK_Seat_Show" FromRole="Show" ToRole="Seat" />
+    <NavigationProperty Name="Theatre" Relationship="Self.FK_Show_Theatre" FromRole="Show" ToRole="Theatre" />
   </EntityType>
   <EntityType Name="Theatre">
     <Key>
@@ -52,6 +59,7 @@
     <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Shows" Relationship="Self.FK_Show_Theatre" FromRole="Theatre" ToRole="Show" />
   </EntityType>
   <Association Name="FK_Booking_Show">
     <End Role="Show" Type="Self.Show" Multiplicity="1" />
@@ -101,7 +109,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BookMyShowEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="BookMyShowEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Bookings" EntityType="Self.Booking" />
     <EntitySet Name="MovieTables" EntityType="Self.MovieTable" />
     <EntitySet Name="Seats" EntityType="Self.Seat" />
@@ -123,5 +131,17 @@
       <End Role="Theatre" EntitySet="Theatres" />
       <End Role="Show" EntitySet="Shows" />
     </AssociationSet>
+    <EntitySet Name="Users" EntityType="BookMyShowModel.User" />
   </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

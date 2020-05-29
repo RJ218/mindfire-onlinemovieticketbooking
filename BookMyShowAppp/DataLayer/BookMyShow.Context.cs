@@ -13,10 +13,10 @@ namespace DataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BookMyShowEntities1 : DbContext
+    public partial class BookMyShowEntities2 : DbContext
     {
-        public BookMyShowEntities1()
-            : base("name=BookMyShowEntities1")
+        public BookMyShowEntities2()
+            : base("name=BookMyShowEntities2")
         {
         }
     
@@ -30,5 +30,6 @@ namespace DataLayer
         public virtual DbSet<Seat> Seats { get; set; }
         public virtual DbSet<Show> Shows { get; set; }
         public virtual DbSet<Theatre> Theatres { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

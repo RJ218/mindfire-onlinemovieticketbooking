@@ -12,13 +12,13 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Seat
+    public partial class User
     {
-        public int SeatId { get; set; }
-        public string ShowId { get; set; }
-        public int RowNo { get; set; }
-        public string Status { get; set; }
-    
-        public virtual Show Show { get; set; }
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string MobileNo { get; set; }
+        public string EmailId { get; set; }
+        public string Address { get; set; }
     }
 }

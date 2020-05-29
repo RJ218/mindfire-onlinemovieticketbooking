@@ -26,5 +26,10 @@ namespace PresentationLayer.Controllers
         }
         public ActionResult BookSeats()
         { return View(); }
+
+        public ActionResult UserRegistration()
+        {
+            return View();
+        }
     }
 }

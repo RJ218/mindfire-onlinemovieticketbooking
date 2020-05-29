@@ -196,7 +196,7 @@
     <div class='container-fluid'>
         <div class='jumbotron'>
             <p>
-                <span id='movies_heading'>Upcoming Movies</span> <span class='coming_soon'>now showing</span> <span class='coming_soon'>coming soon</span> <span class='coming_soon'>Exclusive</span>
+                <span id='movies_heading' style="position:relative;left:180px;">Movies</span>
             </p>
 
             <div class='row'>
@@ -259,28 +259,7 @@
                 </div>
                 <div class='col-md-9 '>
 
-                    <div class='row  mb-4'>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary button'>2020</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary'>2021</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary'>2022</button></div>
-                    </div>
-                    <div class='row  mb-4'>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary disabled'>JAN</button></div>
-                        <div class='col-md-1'>
-                            <button class='btn btn-sm btn-light btn-outline-primary disabled '>FEB</button>
-                        </div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary disabled'>MAR</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary disabled'>APR</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>MAY</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>JUN</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>JUL</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary'>AUG</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>SEP</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>OCT</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>NOV</button></div>
-                        <div class='col-md-1'><button class='btn btn-sm btn-light btn-outline-primary '>DEC</button></div>
-
-                    </div>
+                   
                     <div class=' row mb-4 ' id='movies_row'>
                      
                     </div>
@@ -300,6 +279,7 @@
                     $.ajax(
                         fetch("http://localhost:51059/api/GetInfo", {
                             method: "GET"
+                            
 
                         })
                             .then(res => res.json())

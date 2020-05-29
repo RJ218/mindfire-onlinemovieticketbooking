@@ -58,6 +58,17 @@
           <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Pincode" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Booking_Show">
           <End Role="Show" Type="Self.Show" Multiplicity="1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
@@ -112,6 +123,7 @@
           <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Show" EntityType="Self.Show" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Theatre" EntityType="Self.Theatre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Booking_Show" Association="Self.FK_Booking_Show">
             <End Role="Show" EntitySet="Show" />
             <End Role="Booking" EntitySet="Booking" />
@@ -142,6 +154,7 @@
           <Property Name="ShowId" Type="Int32" Nullable="false" />
           <Property Name="TicketQuantity" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Show" Relationship="Self.FK_Booking_Show" FromRole="Booking" ToRole="Show" />
         </EntityType>
         <EntityType Name="MovieTable">
           <Key>
@@ -156,6 +169,7 @@
           <Property Name="Rating" Type="Int32" Nullable="false" />
           <Property Name="ImageAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Synopsis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Shows" Relationship="Self.FK_Show_MovieTable" FromRole="MovieTable" ToRole="Show" />
         </EntityType>
         <EntityType Name="Seat">
           <Key>
@@ -165,6 +179,7 @@
           <Property Name="ShowId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RowNo" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Show" Relationship="Self.FK_Seat_Show" FromRole="Seat" ToRole="Show" />
         </EntityType>
         <EntityType Name="Show">
           <Key>
@@ -174,6 +189,10 @@
           <Property Name="MovieId" Type="Int32" Nullable="false" />
           <Property Name="TheatreId" Type="Int32" Nullable="false" />
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_Show" FromRole="Show" ToRole="Booking" />
+          <NavigationProperty Name="MovieTable" Relationship="Self.FK_Show_MovieTable" FromRole="Show" ToRole="MovieTable" />
+          <NavigationProperty Name="Seat" Relationship="Self.FK_Seat_Show" FromRole="Show" ToRole="Seat" />
+          <NavigationProperty Name="Theatre" Relationship="Self.FK_Show_Theatre" FromRole="Show" ToRole="Theatre" />
         </EntityType>
         <EntityType Name="Theatre">
           <Key>
@@ -185,6 +204,7 @@
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Shows" Relationship="Self.FK_Show_Theatre" FromRole="Theatre" ToRole="Show" />
         </EntityType>
         <Association Name="FK_Booking_Show">
           <End Role="Show" Type="Self.Show" Multiplicity="1" />
@@ -234,7 +254,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BookMyShowEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BookMyShowEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bookings" EntityType="Self.Booking" />
           <EntitySet Name="MovieTables" EntityType="Self.MovieTable" />
           <EntitySet Name="Seats" EntityType="Self.Seat" />
@@ -256,13 +276,25 @@
             <End Role="Theatre" EntitySet="Theatres" />
             <End Role="Show" EntitySet="Shows" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="BookMyShowModel.User" />
         </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BookMyShowModelStoreContainer" CdmEntityContainer="BookMyShowEntities1">
+        <EntityContainerMapping StorageEntityContainer="BookMyShowModelStoreContainer" CdmEntityContainer="BookMyShowEntities2">
           <EntitySetMapping Name="Bookings">
             <EntityTypeMapping TypeName="BookMyShowModel.Booking">
               <MappingFragment StoreEntitySet="Booking">
@@ -277,7 +309,6 @@
           <EntitySetMapping Name="MovieTables">
             <EntityTypeMapping TypeName="BookMyShowModel.MovieTable">
               <MappingFragment StoreEntitySet="MovieTable">
-                <ScalarProperty Name="Synopsis" ColumnName="Synopsis" />
                 <ScalarProperty Name="MovieId" ColumnName="MovieId" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Trailer" ColumnName="Trailer" />
@@ -286,6 +317,7 @@
                 <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="ImageAddress" ColumnName="ImageAddress" />
+                <ScalarProperty Name="Synopsis" ColumnName="Synopsis" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -318,6 +350,18 @@
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BookMyShowModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

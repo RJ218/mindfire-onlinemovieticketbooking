@@ -53,6 +53,17 @@
     <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Pincode" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Booking_Show">
     <End Role="Show" Type="Self.Show" Multiplicity="1" />
     <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
@@ -107,6 +118,7 @@
     <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Show" EntityType="Self.Show" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Theatre" EntityType="Self.Theatre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Booking_Show" Association="Self.FK_Booking_Show">
       <End Role="Show" EntitySet="Show" />
       <End Role="Booking" EntitySet="Booking" />

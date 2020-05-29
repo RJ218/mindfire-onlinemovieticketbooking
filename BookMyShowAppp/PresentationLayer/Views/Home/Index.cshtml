@@ -83,6 +83,12 @@
             top: -20px;
         }
 
+        #log_button{
+            border:1px;
+            border-color:white;
+        }
+
+
         .back {
             background-color: antiquewhite !important;
         }
@@ -210,7 +216,10 @@
                             </li><!--lang selection done-->
                             <li>
                                 <!--signup-->
-                                <a href="#" id="signup">Signup</a>
+                                <div id="log_button">
+
+                                </div>
+
                             </li><!--signup done-->
                             <li>
                                 <!--togglebtn-->
@@ -227,7 +236,7 @@
                     <div class="inner-nav left-nav">
                         <ul>
                             <li class="primary-menu">
-                                <a href="http://localhost:60564/Home/MoviePage" class="nav-link">Movies</a>
+                                <a href="http://localhost:60564/Home/MoviePage" class="nav-link">Activities</a>
                             </li>
                             <li class="primary-menu">
                                 <a href="#" class="nav-link menu-item">Events</a>
@@ -297,6 +306,7 @@
         </div><!--contanr-->
     </div><!--end of slide show-->
     <!--sidebar-->
+   
     <div id="sidebar">
         <div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
             <div class="profile-guest" style="display: flex;">
@@ -406,12 +416,16 @@
             </div>
             <img style="width:80px;height:80px;margin-left:40%;" src="~/Images/icon.jpg" />
             <form action="">
-                <input type="text" placeholder="UserName" required />
-                <input type="password" placeholder="Password" required />
-                <a href="#" class="btn btn-primary  active" role="button" aria-pressed="true">Submit</a>
+                <input type="text" placeholder="UserName" id="username" required />
+                <input type="password" placeholder="Password" id="password" required />
+
+                <a href="#" class="btn btn-primary    active" onclick="submit_button()" role="button" aria-pressed="true">Submit</a>
+                <a href="http://localhost:60564/Home/UserRegistration" class="btn btn-primary"  id="register_bttn">Register Now</a>
+
             </form>
         </div><!--modal-content-->
     </div><!--bg-modal-->
+
     <!-- Footer -->
     <section id="footer">
         <img style="height:40px;width:95px;" src="~/Images/book.png" />
@@ -473,134 +487,270 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha256-NXRS8qVcmZ3dOv3LziwznUHPegFhPZ1F/4inU7uC8h0=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-	 	$('.slider').slick({
-  dots: true,
-  infinite:true,
-  speed: 300,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-    autoplay: true,
-  autoplaySpeed: 2000,
+        var login = 0;
 
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        infinite: true,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
-});
-	/*$('.slider').slick({
-  slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
+        if (login == 0) {
+            document.getElementById('log_button').innerHTML = `<a href="#" id="signup">signup</a>`;
+        }
+
+        else {
+            document.getElementById('log_button').innerHTML = `<a href="#" id="signup">logout</a>`;
+        }
+
+
+        $('.slider').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+        /*$('.slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
 });*/
-    /*	window.addEventListener('mouseup', function(event){
-           var vbox=document.getElementById('sidebar');
-           if(event.target !=vbox && event.target.parentNode !=vbox)
-           {
-           	vbox.style.display="none";
-           }
-      	});*/
-	 	function signup(){
-	 	    document.getElementById("signinpopup").style.display = "block";
-	 	}
-      	function togglebtn() {
-      		document.getElementById("sidebar").style.display="block";
-      		// body...
-      	}
-      	function getLang()
-      	{
-      		document.getElementById("language").style.display="block";
-      	}
-      	function getCity()
-      	{
-      		document.getElementById("mydiv").style.display="block";
-      	}
-      	function closebtn() {
-      	    document.getElementById("sidebar").style.display = "none";
-      	}
-      	document.getElementById('signup').addEventListener('click', function () {
-      	    document.querySelector('.bg-modal').style.display = 'flex';
-      	    document.getElementById('bb').style.overflow='hidden';
-      	});
-      	document.querySelector('.close').addEventListener('click', function () {
-      	    document.querySelector('.bg-modal').style.display = 'none';
-      	    document.getElementById('bb').style.overflow = 'visible';
-      	});
-      	window.addEventListener('mouseup', function(event){
-           var vbox=document.getElementById('mydiv');
-          var box=document.getElementById('search-citys');
-           var box1=document.getElementById('city-head');
-           var box2=document.getElementById('popularcities');
-           var box3=document.getElementById('icons');
-           var box4=document.getElementById('_icon');
-           var box5=document.getElementById('1');
-           var box6=document.getElementById('2');
-           var box7=document.getElementById('3');
-           var box8=document.getElementById('4');
-           var box9=document.getElementById('5');
-           var box10=document.getElementById('6');
-           var box11=document.getElementById('7');
-           var box12 = document.getElementById('8');
-           var box13 = document.getElementById('mum');
-           var box14 = document.getElementById('ncr');
-           var box15 = document.getElementById('bang');
-           var box16 = document.getElementById('hydra');
-           var box17 = document.getElementById('chenn');
-           var box18 = document.getElementById('chan');
-           var box19 = document.getElementById('pune');
-           var box20 = document.getElementById('ahem');
-           if(event.target !=vbox && event.target.parentNode !=vbox && event.target !=box && event.target !=box1 && event.target.parentNode != box1 && event.target !=box2 && event.target.parentNode !=box2  && event.target !=box3 && event.target.parentNode !=box3
-           	&& event.target != box4 && event.target.parentNode != box4 && event.target != box5 && event.target != box13 && event.target.parentNode != box13 && event.target != box14 && event.target.parentNode != box14
-            &&  event.target != box15 && event.target.parentNode != box15  && event.target != box16 && event.target.parentNode != box16 && event.target != box17 && event.target.parentNode != box17 &&
-            event.target != box18 && event.target.parentNode != box18 && event.target != box19 && event.target.parentNode != box19 && event.target != box20 && event.target.parentNode != box20 && event.target.parentNode != box5 && event.target != box6 && event.target.parentNode != box6 && event.target != box7 && event.target.parentNode != box7 && event.target != box8 && event.target.parentNode != box8 && event.target != box9 && event.target.parentNode != box9 && event.target != box10 && event.target.parentNode != box10 && event.target != box11 && event.target.parentNode != box11 && event.target != box12 && event.target.parentNode != box12)
+        /*	window.addEventListener('mouseup', function(event){
+               var vbox=document.getElementById('sidebar');
+               if(event.target !=vbox && event.target.parentNode !=vbox)
+               {
+                vbox.style.display="none";
+               }
+            });*/
+        function signup() {
+            document.getElementById("signinpopup").style.display = "block";
+        }
+        function togglebtn() {
+            document.getElementById("sidebar").style.display = "block";
+            // body...
+        }
+        function getLang() {
+            document.getElementById("language").style.display = "block";
+        }
+        function getCity() {
+            document.getElementById("mydiv").style.display = "block";
+        }
+        function closebtn() {
+            document.getElementById("sidebar").style.display = "none";
+        }
+        document.getElementById('signup').addEventListener('click', function () {
+            document.querySelector('.bg-modal').style.display = 'flex';
+            document.getElementById('bb').style.overflow = 'hidden';
+        });
+        document.querySelector('.close').addEventListener('click', function () {
+            document.querySelector('.bg-modal').style.display = 'none';
+            document.getElementById('bb').style.overflow = 'visible';
+        });
+        window.addEventListener('mouseup', function (event) {
+            var vbox = document.getElementById('mydiv');
+            var box = document.getElementById('search-citys');
+            var box1 = document.getElementById('city-head');
+            var box2 = document.getElementById('popularcities');
+            var box3 = document.getElementById('icons');
+            var box4 = document.getElementById('_icon');
+            var box5 = document.getElementById('1');
+            var box6 = document.getElementById('2');
+            var box7 = document.getElementById('3');
+            var box8 = document.getElementById('4');
+            var box9 = document.getElementById('5');
+            var box10 = document.getElementById('6');
+            var box11 = document.getElementById('7');
+            var box12 = document.getElementById('8');
+            var box13 = document.getElementById('mum');
+            var box14 = document.getElementById('ncr');
+            var box15 = document.getElementById('bang');
+            var box16 = document.getElementById('hydra');
+            var box17 = document.getElementById('chenn');
+            var box18 = document.getElementById('chan');
+            var box19 = document.getElementById('pune');
+            var box20 = document.getElementById('ahem');
+            if (event.target != vbox && event.target.parentNode != vbox && event.target != box && event.target != box1 && event.target.parentNode != box1 && event.target != box2 && event.target.parentNode != box2 && event.target != box3 && event.target.parentNode != box3
+                && event.target != box4 && event.target.parentNode != box4 && event.target != box5 && event.target != box13 && event.target.parentNode != box13 && event.target != box14 && event.target.parentNode != box14
+                && event.target != box15 && event.target.parentNode != box15 && event.target != box16 && event.target.parentNode != box16 && event.target != box17 && event.target.parentNode != box17 &&
+                event.target != box18 && event.target.parentNode != box18 && event.target != box19 && event.target.parentNode != box19 && event.target != box20 && event.target.parentNode != box20 && event.target.parentNode != box5 && event.target != box6 && event.target.parentNode != box6 && event.target != box7 && event.target.parentNode != box7 && event.target != box8 && event.target.parentNode != box8 && event.target != box9 && event.target.parentNode != box9 && event.target != box10 && event.target.parentNode != box10 && event.target != box11 && event.target.parentNode != box11 && event.target != box12 && event.target.parentNode != box12)
 
-           	vbox.style.display="none";
-      	});
-      	window.addEventListener('mouseup', function (event) {
-      	    var item1 = document.getElementById('language');
-      	    var item2 = document.getElementById('select-lang');
-      	    var item3 = document.getElementById('langop');
-      	    var item4 = document.getElementById('eng');
-      	    var item5 = document.getElementById('english');
-      	    var item6 = document.getElementById('hin');
-      	    var item7 = document.getElementById('hindi');
-      	    var item8 = document.getElementById('mara');
-      	    var item9 = document.getElementById('marathi');
+                vbox.style.display = "none";
+        });
+
+        document.getElementById('logout').onclick = function logout_click() {
+            alert('logoit');
+            document.getElementById('sidebar').innerHTML = `<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
+            <div class="profile-guest" style="display: flex;">
+                <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
+                <div class="profile-heading">Hey!</div>
+                <div class="profile-login-container" style="background-color:white !important;">
+                    <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                    <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
+                        Login / Register
+                    </div>
+                </div>
+            </div><!--end of profileguest-->
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li><a href="#"><div class="list-text">Notification</div></a></li>
+                <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+            </ul>
+        </div>`;
+
+            document.getElementById('logout').innerHTML= `<a href="#" id="signup">signup</a>`;
 
 
-      	    if (event.target != item1 && event.target.parentNode != item1 && event.target != item1 && event.target != item2
+
+        }
+
+        window.addEventListener('mouseup', function (event) {
+            var item1 = document.getElementById('language');
+            var item2 = document.getElementById('select-lang');
+            var item3 = document.getElementById('langop');
+            var item4 = document.getElementById('eng');
+            var item5 = document.getElementById('english');
+            var item6 = document.getElementById('hin');
+            var item7 = document.getElementById('hindi');
+            var item8 = document.getElementById('mara');
+            var item9 = document.getElementById('marathi');
+
+
+            if (event.target != item1 && event.target.parentNode != item1 && event.target != item1 && event.target != item2
                 && event.target.parentNode != item2 && event.target != item3 && event.target.parentNode != item3 && event.target != item4
                 && event.target.parentNode != item4 && event.target != item5 && event.target.parentNode != item5 &&
-      	        event.target != item6 && event.target.parentNode != item6 && event.target != item7 && event.target.parentNode != item7 &&
-      	        event.target != item8 && event.target.parentNode != item8 && event.target != item9 && event.target.parentNode != item9)
-      	        item1.style.display = "none";
+                event.target != item6 && event.target.parentNode != item6 && event.target != item7 && event.target.parentNode != item7 &&
+                event.target != item8 && event.target.parentNode != item8 && event.target != item9 && event.target.parentNode != item9)
+                item1.style.display = "none";
 
-      	});
+        });
+        function submit_button() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            //  console.log(username);
+            //console.log(password);
+            console.log( JSON.stringify({
+                        user_name: username,
+                        pass: password
+                    }))
+            fetch("http://localhost:51059/api/UserAuthentication",
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        user_name: username,
+                        pass: password
+                    })
+                }).then(res => res.json())
+                .then(result => {
+                    console.log(result)
+                    if (result.length == 0) {
+                        alert('wrong entries');
+                        document.getElementById('sidebar').innerHTML=`<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
+            <div class="profile-guest" style="display: flex;">
+                <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
+                <div class="profile-heading">Hey!</div>
+                <div class="profile-login-container" style="background-color:white !important;">
+                    <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                    <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
+                        Login / Register
+                    </div>
+                </div>
+            </div><!--end of profileguest-->
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li><a href="#"><div class="list-text">Notification</div></a></li>
+                <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+            </ul>
+        </div>`
+                    }
+                    else {
+                        document.getElementById('log_button').innerHTML = `<a href="#" id="logout_bttn" onclick="logout_click()">logout</a>`;
+                        document.getElementById('sidebar').innerHTML =`<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
 
+            <div class="profile-guest" style="display: flex;">
+                <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
+                <div class="profile-heading">Hey! ${username}</div>
+                <div class="profile-login-container" style="background-color:white !important;">
+                    <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                    <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
+                        Logout
+                    </div>
+                </div>
+            </div><!--end of profileguest-->
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li><a href="#"><div class="list-text">Notification</div></a></li>
+                <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+            </ul>
+        </div>`
+
+                        localStorage.setItem("user_name", username);
+                    }
+                })
+
+             document.querySelector('.bg-modal').style.display = 'none';
+            document.getElementById('bb').style.overflow = 'visible';
+        }
+        function logout_click() {
+            localStorage.setItem("user_name", "");
+            //alert('logout');
+            document.getElementById('log_button').innerHTML = `<a href="#" id="signup">signup</a>`;
+            document.getElementById('sidebar').innerHTML=`<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
+            <div class="profile-guest" style="display: flex;">
+                <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
+                <div class="profile-heading">Hey!</div>
+                <div class="profile-login-container" style="background-color:white !important;">
+                    <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                    <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
+                        Login / Register
+                    </div>
+                </div>
+            </div><!--end of profileguest-->
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li><a href="#"><div class="list-text">Notification</div></a></li>
+                <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+            </ul>
+        </div>`
+
+        }
     </script>
 </body>
 </html>
