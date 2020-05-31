@@ -295,6 +295,7 @@
     <Content Include="Views\Home\BookNow.cshtml" />
     <Content Include="Views\Home\BookSeats.cshtml" />
     <Content Include="Views\Home\MovieInformation.cshtml" />
+    <Content Include="Views\Home\UserRegistration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

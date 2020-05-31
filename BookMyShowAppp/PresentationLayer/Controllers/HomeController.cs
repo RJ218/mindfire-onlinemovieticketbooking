@@ -22,15 +22,19 @@ namespace PresentationLayer.Controllers
             ViewData["movieid"] = Movieid;
             return View();
         }
-       /* public ActionResult Martian()
-        { return View();
-        }*/
+       
         public ActionResult BookNow()//common page
         {
             
             return View();
         }
         public ActionResult BookSeats()
-        { return View(); }
+        {
+            return View();
+        }
+        public ActionResult UserRegistration()
+        {
+            return View();
+        }
     }
 }

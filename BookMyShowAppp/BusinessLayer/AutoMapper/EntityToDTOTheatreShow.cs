@@ -12,7 +12,7 @@ namespace BusinessLayer.AutoMapper
   public  class EntityToDTOTheatreShow
     {
 
-        public List<ThShowDTO> ConvertList(List<TheatreShow> id)
+        public List<ThShowDTO> ConvertTheatreShowVal(List<TheatreShow> id)
         {
             List<ThShowDTO> map = new List<ThShowDTO>();
             Mapper.Initialize(config =>
@@ -36,7 +36,20 @@ namespace BusinessLayer.AutoMapper
 
             return map;
         }
+        //mapper to convert movietable of entity to movietable of dto
+        public List<MovieTableDTO> ConvertMovies(List<MovieTable> id)
+        {
+            List<MovieTableDTO> map = new List<MovieTableDTO>();
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<MovieTable, MovieTableDTO>();
+            });
+            for (int i = 0; i < id.Count; i++)
+                map.Add(Mapper.Map<MovieTableDTO>(id[i]));
 
+            return map;
+        }
+        
 
     }
 }

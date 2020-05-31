@@ -47,7 +47,7 @@
        
         $.ajax(
             {
-                type: "GET", url: "http://localhost:60562//api/GetTheatreId?data="+ThData  ,
+                type: "GET", url: "http://localhost:60562//api/GetTheatreId?theatreid="+ThData  ,
                 success: (response) => {
                    
                     var x = JSON.stringify(response);

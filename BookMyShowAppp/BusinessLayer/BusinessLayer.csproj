@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapper\DTOtoEntity.cs" />
     <Compile Include="AutoMapper\EntityToDTOTheatreShow.cs" />
     <Compile Include="MoviesBAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
