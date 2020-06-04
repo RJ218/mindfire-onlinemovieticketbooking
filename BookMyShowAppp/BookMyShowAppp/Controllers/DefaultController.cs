@@ -70,5 +70,14 @@ namespace BookMyShowAppp.Controllers
             Bal_obj.userRegistration(obj);
             return 1;
         }
+
+        [HttpGet]
+        [Route("GetBookingInfo")]
+        public List<Booking> GetBookingInfo(int showid)
+        {
+            MoviesDAL bal_obj = new MoviesDAL();
+            return bal_obj.GetBookingInfo(showid);
+
+        }
     }
 }

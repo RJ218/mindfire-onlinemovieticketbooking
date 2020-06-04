@@ -13,10 +13,10 @@ namespace DataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BookMyShowEntities4 : DbContext
+    public partial class BookMyShowEntities : DbContext
     {
-        public BookMyShowEntities4()
-            : base("name=BookMyShowEntities4")
+        public BookMyShowEntities()
+            : base("name=BookMyShowEntities")
         {
         }
     
@@ -25,11 +25,11 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Booking> Bookings { get; set; }
         public virtual DbSet<MovieTable> MovieTables { get; set; }
-        public virtual DbSet<Seat> Seats { get; set; }
         public virtual DbSet<Show> Shows { get; set; }
         public virtual DbSet<Theatre> Theatres { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<Seat> Seats { get; set; }
     }
 }

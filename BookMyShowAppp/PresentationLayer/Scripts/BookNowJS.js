@@ -13,12 +13,13 @@ console.log(movieid);
                       //console.log(br.TheatreId);
                        if (str != br.TheatreName) {
                            str = br.TheatreName;
-                           var str2 = br.TheatreId;
-                           var str3 = br.ShowId;
-                           document.getElementById("emptable").innerHTML += "<br/><br/>" + "<a class='xx'>" + str + "</a>" + "<br/>";
+                          
+                           document.getElementById("emptable").innerHTML += "<br/><br/>" + "<h4 class='xx'>" + str + "</h4>" + "<br/>   <div class='row' id="+str2+"> </div>";
                        }
+                       var str2 = br.TheatreId;
+                       var str3 = br.ShowId;
                        str1 = br.DateTime;
-                       document.getElementById("emptable").innerHTML += "<a class='cityLink' id='" + str +"' value='"+str2 +"' name='"+str3 +"'>" + str1 + "</a>" + "&nbsp&nbsp&nbsp";
+                       document.getElementById("emptable").innerHTML += "<div class='cityLink card ml-2 col-md-auto' id='" + str +"' value='"+str2 +"' name='"+str3 +"'>" + str1 + "</div>" ;
                    }// console.log(theatreid);
                    $(document).ready(function () {
                        $(".cityLink").click(function () {

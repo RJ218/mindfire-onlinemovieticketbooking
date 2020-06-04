@@ -13,7 +13,7 @@ namespace DataLayer
         public Nullable<int> UserId { get; set; }
         public Nullable<int> TicketQuantity { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-        public List<Value> SeatF { get; set; }
+        public IList<Value> SeatF { get; set; }
     }
 
     public class Value

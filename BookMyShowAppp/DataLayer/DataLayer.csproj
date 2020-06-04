@@ -55,54 +55,54 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Booking.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
+      <DependentUpon>BookMyShow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookMyShow.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookMyShow.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookMyShow.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookMyShow.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookMyShow.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookMyShow.edmx</DependentUpon>
     </Compile>
     <Compile Include="BookSeat.cs" />
     <Compile Include="GetTheatreId.cs" />
-    <Compile Include="MovieModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MovieModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MovieModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MovieModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MovieModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MovieModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="MoviesDAL.cs" />
     <Compile Include="MovieTable.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
+      <DependentUpon>BookMyShow.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seat.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
+      <DependentUpon>BookMyShow.tt</DependentUpon>
     </Compile>
     <Compile Include="Show.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
+      <DependentUpon>BookMyShow.tt</DependentUpon>
     </Compile>
     <Compile Include="Theatre.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
+      <DependentUpon>BookMyShow.tt</DependentUpon>
     </Compile>
     <Compile Include="TheatreShow.cs" />
     <Compile Include="User.cs">
-      <DependentUpon>MovieModel.tt</DependentUpon>
+      <DependentUpon>BookMyShow.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="MovieModel.edmx">
+    <EntityDeploy Include="BookMyShow.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MovieModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>BookMyShow.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MovieModel.edmx.diagram">
-      <DependentUpon>MovieModel.edmx</DependentUpon>
+    <None Include="BookMyShow.edmx.diagram">
+      <DependentUpon>BookMyShow.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -110,15 +110,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MovieModel.Context.tt">
+    <Content Include="BookMyShow.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MovieModel.edmx</DependentUpon>
-      <LastGenOutput>MovieModel.Context.cs</LastGenOutput>
+      <DependentUpon>BookMyShow.edmx</DependentUpon>
+      <LastGenOutput>BookMyShow.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MovieModel.tt">
+    <Content Include="BookMyShow.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MovieModel.edmx</DependentUpon>
-      <LastGenOutput>MovieModel.cs</LastGenOutput>
+      <DependentUpon>BookMyShow.edmx</DependentUpon>
+      <LastGenOutput>BookMyShow.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
