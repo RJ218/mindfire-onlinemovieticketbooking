@@ -2,13 +2,24 @@
 <Schema Namespace="BookMyShowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Booking">
     <Key>
-      <PropertyRef Name="BookingId" />
+      <PropertyRef Name="Sno" />
     </Key>
     <Property Name="BookingId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="ShowId" Type="int" Nullable="false" />
     <Property Name="TicketQuantity" Type="int" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="SeatId" Type="int" Nullable="false" />
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cast">
+    <Key>
+      <PropertyRef Name="RowNo" />
+    </Key>
+    <Property Name="MovieId" Type="int" Nullable="false" />
+    <Property Name="ActorName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActorPhotoLink" Type="varchar(max)" Nullable="false" />
+    <Property Name="RowNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="MovieTable">
     <Key>
@@ -26,12 +37,11 @@
   </EntityType>
   <EntityType Name="Seat">
     <Key>
-      <PropertyRef Name="RowNo" />
+      <PropertyRef Name="SeatId" />
     </Key>
-    <Property Name="SeatId" Type="int" Nullable="false" />
-    <Property Name="ShowId" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="RowNo" Type="int" Nullable="false" />
-    <Property Name="Status" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="SeatId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TheatreId" Type="int" Nullable="false" />
+    <Property Name="SeatNo" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Show">
     <Key>
@@ -76,15 +86,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Seat_Show">
-    <End Role="Show" Type="Self.Show" Multiplicity="1" />
-    <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+  <Association Name="FK_Seat_Theatre">
+    <End Role="Theatre" Type="Self.Theatre" Multiplicity="1" />
+    <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Show">
-        <PropertyRef Name="ShowId" />
+      <Principal Role="Theatre">
+        <PropertyRef Name="TheatreId" />
       </Principal>
       <Dependent Role="Seat">
-        <PropertyRef Name="RowNo" />
+        <PropertyRef Name="TheatreId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -114,6 +124,7 @@
   </Association>
   <EntityContainer Name="BookMyShowModelStoreContainer">
     <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cast" EntityType="Self.Cast" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MovieTable" EntityType="Self.MovieTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Show" EntityType="Self.Show" Schema="dbo" store:Type="Tables" />
@@ -123,8 +134,8 @@
       <End Role="Show" EntitySet="Show" />
       <End Role="Booking" EntitySet="Booking" />
     </AssociationSet>
-    <AssociationSet Name="FK_Seat_Show" Association="Self.FK_Seat_Show">
-      <End Role="Show" EntitySet="Show" />
+    <AssociationSet Name="FK_Seat_Theatre" Association="Self.FK_Seat_Theatre">
+      <End Role="Theatre" EntitySet="Theatre" />
       <End Role="Seat" EntitySet="Seat" />
     </AssociationSet>
     <AssociationSet Name="FK_Show_MovieTable" Association="Self.FK_Show_MovieTable">

@@ -14,21 +14,9 @@ namespace DataLayer
     
     public partial class Show
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Show()
-        {
-            this.Bookings = new HashSet<Booking>();
-        }
-    
         public int ShowId { get; set; }
         public int MovieId { get; set; }
         public int TheatreId { get; set; }
         public System.DateTime DateTime { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Booking> Bookings { get; set; }
-        public virtual MovieTable MovieTable { get; set; }
-        public virtual Seat Seat { get; set; }
-        public virtual Theatre Theatre { get; set; }
     }
 }

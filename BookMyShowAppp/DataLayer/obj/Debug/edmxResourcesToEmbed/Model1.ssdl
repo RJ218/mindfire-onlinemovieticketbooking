@@ -1,51 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MovieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="BookMyShowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Booking">
     <Key>
       <PropertyRef Name="BookingId" />
     </Key>
     <Property Name="BookingId" Type="int" Nullable="false" />
-    <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="ShowId" Type="int" Nullable="false" />
-    <Property Name="TicketQuantity" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="TicketQuantity" Type="int" />
     <Property Name="Date" Type="datetime" />
+    <Property Name="ShowId" Type="int" />
   </EntityType>
   <EntityType Name="MovieTable">
     <Key>
       <PropertyRef Name="MovieId" />
     </Key>
     <Property Name="MovieId" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Category" Type="nvarchar" MaxLength="50" />
-    <Property Name="Trailer" Type="image" />
+    <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Trailer" Type="varchar(max)" Nullable="false" />
+    <Property Name="MovieName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReleaseDate" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Language" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="ImageAddress" Type="varchar(max)" Nullable="false" />
+    <Property Name="Synopsis" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Seat">
     <Key>
       <PropertyRef Name="SeatId" />
     </Key>
     <Property Name="SeatId" Type="int" Nullable="false" />
-    <Property Name="ShowId" Type="int" Nullable="false" />
-    <Property Name="SeatNo" Type="int" Nullable="false" />
-    <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TheatreId" Type="int" />
+    <Property Name="SeatNo" Type="int" />
   </EntityType>
   <EntityType Name="Show">
     <Key>
       <PropertyRef Name="ShowId" />
     </Key>
     <Property Name="ShowId" Type="int" Nullable="false" />
-    <Property Name="TheatreId" Type="int" Nullable="false" />
-    <Property Name="MovieId" Type="int" Nullable="false" />
-    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="TheatreId" Type="int" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="MovieId" Type="int" />
   </EntityType>
   <EntityType Name="Theatre">
     <Key>
       <PropertyRef Name="TheatreId" />
     </Key>
     <Property Name="TheatreId" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TheatreName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="City" Type="nvarchar" MaxLength="50" />
-    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
     <Property Name="Pincode" Type="int" />
   </EntityType>
   <EntityType Name="User">
@@ -53,13 +57,14 @@
       <PropertyRef Name="UserId" />
     </Key>
     <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="MoblieNo" Type="bigint" Nullable="false" />
-    <Property Name="EmailId" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="bigint" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK_Booking_Show">
-    <End Role="Show" Type="Self.Show" Multiplicity="1" />
+    <End Role="Show" Type="Self.Show" Multiplicity="0..1" />
     <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Show">
@@ -71,7 +76,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Booking_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
@@ -82,20 +87,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Seat_Show">
-    <End Role="Show" Type="Self.Show" Multiplicity="1" />
+  <Association Name="FK_Seat_Theatre">
+    <End Role="Theatre" Type="Self.Theatre" Multiplicity="0..1" />
     <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Show">
-        <PropertyRef Name="ShowId" />
+      <Principal Role="Theatre">
+        <PropertyRef Name="TheatreId" />
       </Principal>
       <Dependent Role="Seat">
-        <PropertyRef Name="ShowId" />
+        <PropertyRef Name="TheatreId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Show_MovieTable">
-    <End Role="MovieTable" Type="Self.MovieTable" Multiplicity="1" />
+    <End Role="MovieTable" Type="Self.MovieTable" Multiplicity="0..1" />
     <End Role="Show" Type="Self.Show" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MovieTable">
@@ -107,18 +112,18 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Show_Theatre">
-    <End Role="MovieTable" Type="Self.MovieTable" Multiplicity="1" />
+    <End Role="Theatre" Type="Self.Theatre" Multiplicity="0..1" />
     <End Role="Show" Type="Self.Show" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="MovieTable">
-        <PropertyRef Name="MovieId" />
+      <Principal Role="Theatre">
+        <PropertyRef Name="TheatreId" />
       </Principal>
       <Dependent Role="Show">
-        <PropertyRef Name="MovieId" />
+        <PropertyRef Name="TheatreId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MovieModelStoreContainer">
+  <EntityContainer Name="BookMyShowModelStoreContainer">
     <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MovieTable" EntityType="Self.MovieTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
@@ -133,8 +138,8 @@
       <End Role="User" EntitySet="User" />
       <End Role="Booking" EntitySet="Booking" />
     </AssociationSet>
-    <AssociationSet Name="FK_Seat_Show" Association="Self.FK_Seat_Show">
-      <End Role="Show" EntitySet="Show" />
+    <AssociationSet Name="FK_Seat_Theatre" Association="Self.FK_Seat_Theatre">
+      <End Role="Theatre" EntitySet="Theatre" />
       <End Role="Seat" EntitySet="Seat" />
     </AssociationSet>
     <AssociationSet Name="FK_Show_MovieTable" Association="Self.FK_Show_MovieTable">
@@ -142,7 +147,7 @@
       <End Role="Show" EntitySet="Show" />
     </AssociationSet>
     <AssociationSet Name="FK_Show_Theatre" Association="Self.FK_Show_Theatre">
-      <End Role="MovieTable" EntitySet="MovieTable" />
+      <End Role="Theatre" EntitySet="Theatre" />
       <End Role="Show" EntitySet="Show" />
     </AssociationSet>
   </EntityContainer>

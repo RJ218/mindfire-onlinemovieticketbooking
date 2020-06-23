@@ -15,10 +15,7 @@ namespace DataLayer
     public partial class Seat
     {
         public int SeatId { get; set; }
-        public string ShowId { get; set; }
-        public int RowNo { get; set; }
-        public string Status { get; set; }
-    
-        public virtual Show Show { get; set; }
+        public int TheatreId { get; set; }
+        public int SeatNo { get; set; }
     }
 }

@@ -16,19 +16,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
     <!--cdn for bootstrap-->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body id="bb" onload="set_cards()" style="background-color:#D3D3D3;">
-   
+
     <header style="min-height:'65px'; display: block;">
         <nav id="navbar" class="navbar">
             <div class="primary-header">
@@ -133,7 +133,7 @@
                             </li><!--lang selection done-->
                             <li>
                                 <!--signup-->
-                                <a href="#" id="signup">Signup</a>
+                                <a href="#" id="logout_bttn" onclick="logout_click()">logout</a>
                             </li><!--signup done-->
                             <li>
                                 <!--togglebtn-->
@@ -144,6 +144,29 @@
                 </div><!--inner header end-->
             </div><!--primary header-->
             <!--secondry header-->
+            <div id="sidebar" style="display: block;">
+                <div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
+
+                    <div class="profile-guest" style="display: flex;">
+                        <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">×</a></div>
+                        <div class="profile-heading">Hey! rachit</div>
+                        <div class="profile-login-container" style="background-color:white !important;">
+                            <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                            <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                            <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn" onclick="logout_click()">
+                                Logout
+                            </div>
+                        </div>
+                    </div><!--end of profileguest-->
+                </div>
+                <div class="sidebar-menu">
+                    <ul>
+                        <li><a href="#"><div class="list-text">Notification</div></a></li>
+                        <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="primary-nav">
                 <div class="header-inner">
                     <!--left nav-->
@@ -196,90 +219,40 @@
     <div class='container-fluid'>
         <div class='jumbotron'>
             <p>
-                <span id='movies_heading' style="position:relative;left:180px;">Movies</span>
+                <span id='movies_heading' style="position:relative; left:180px;">Movies</span> 
             </p>
 
             <div class='row'>
-                <div class='col-md-2 offset-md-1'>
-                    <div class="accordion mb-2" id="accordionExample">
-                        <div class="card">
+               
+                <div class='col-md-12 offset-md-1 '>
 
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                        aria-expanded="true" aria-controls="collapseOne">
-                                    <span id='collapse_language'> <i class="fa fa-angle-down" style='font-size:xx-larger; padding-right: 8px;'></i> </span>Select Language
-                                </button>
-                            </h2>
-
-                        </div>
-
-                        <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body ml-4">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" onchange="set_card_lang()" >
-                                <label class="form-check-label" for="exampleCheck1">Hindi</label><br>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" >
-                                <label class="form-check-label" for="exampleCheck1">English</label><br>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Punjabi</label><br>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Tamil</label><br>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Telegu</label><br>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion" id="accordionExample">
-                        <div class="card">
-
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                                        aria-expanded="true" aria-controls="collapseOne">
-                                    <span id='collapse_genre'> <i class="fa fa-angle-down" style='font-size:xx-larger; padding-right: 8px;'></i></span>Genre
-                                </button>
-                            </h2>
-
-                        </div>
-
-                        <div id="collapseTwo" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body ml-4">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Action</label><br>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Romance</label><br>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Thriller</label><br>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Horror</label><br>
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Sci-Fi</label><br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class='col-md-9 '>
-
-                   
                     <div class=' row mb-4 ' id='movies_row'>
-                     
+
                     </div>
 
 
-                
 
 
-                  
+
+
                 </div>
-            </div></div></div>
+            </div>
+        </div>
+    </div>
 
 
-            <script>
+    <script>
+         
+
+
                 var card_info = [];
                 function set_cards(...para) {
                     $.ajax(
-                        fetch("http://localhost:51059/api/GetInfo", {
-                            method: "GET"
-                            
+                        fetch("http://localhost:60562//api/GetInfo", {
+                            method: "GET",
+                            headers: {
+                                'Authorization': 'Bearer ' + sessionStorage.getItem("token")+":"+sessionStorage.getItem("username")
+                            }
 
                         })
                             .then(res => res.json())
@@ -316,7 +289,7 @@
                     alert('select')
                     console.log(card_info)
                 }
-                
+
 
                 function signup() {
                     document.getElementById("signinpopup").style.display = "block";
@@ -430,13 +403,13 @@
                 })
 
 
-              
-             
-                   
-                   
-                
 
 
-            </script>
+
+
+
+
+
+    </script>
 </body>
 </html>

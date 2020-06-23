@@ -83,9 +83,9 @@
             top: -20px;
         }
 
-        #log_button{
-            border:1px;
-            border-color:white;
+        #log_button {
+            border: 1px;
+            border-color: white;
         }
 
 
@@ -248,7 +248,7 @@
                                 <a href="#" class="nav-link menu-item">Sports</a>
                             </li>
                             <li class="primary-menu">
-                                <a href="http://localhost:60564/Home/MoviePage#" class="nav-link menu-item">Movies</a>
+                                <a onclick="moviespage()" class="nav-link menu-item">Movies</a>
                             </li>
                             <li class="primary-menu">
                                 <a href="http://localhost:60564/Home/MoviePage" class="nav-link menu-item">Monuments</a>
@@ -306,7 +306,7 @@
         </div><!--contanr-->
     </div><!--end of slide show-->
     <!--sidebar-->
-   
+
     <div id="sidebar">
         <div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
             <div class="profile-guest" style="display: flex;">
@@ -315,7 +315,7 @@
                 <div class="profile-login-container" style="background-color:white !important;">
                     <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
                     <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
-                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
+                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn" onclick="signup_btn()">
                         Login / Register
                     </div>
                 </div>
@@ -420,12 +420,11 @@
                 <input type="password" placeholder="Password" id="password" required />
 
                 <a href="#" class="btn btn-primary    active" onclick="submit_button()" role="button" aria-pressed="true">Submit</a>
-                <a href="http://localhost:60564/Home/UserRegistration" class="btn btn-primary"  id="register_bttn">Register Now</a>
+                <a href="http://localhost:60564/Home/UserRegistration" class="btn btn-primary" id="register_bttn">Register Now</a>
 
             </form>
         </div><!--modal-content-->
     </div><!--bg-modal-->
-
     <!-- Footer -->
     <section id="footer">
         <img style="height:40px;width:95px;" src="~/Images/book.png" />
@@ -488,13 +487,13 @@
 
     <script type="text/javascript">
         var login = 0;
-
+         var userid = '0';
         if (login == 0) {
-            document.getElementById('log_button').innerHTML = `<a href="#" id="signup">signup</a>`;
+            document.getElementById('log_button').innerHTML = `<a href="#" id="signup" onclick="signup_btn()">signup</a>`;
         }
 
         else {
-            document.getElementById('log_button').innerHTML = `<a href="#" id="signup">logout</a>`;
+            document.getElementById('log_button').innerHTML = `<a href="#" id="signup" onclick="logout_click()">logout</a>`;
         }
 
 
@@ -565,10 +564,10 @@
         function closebtn() {
             document.getElementById("sidebar").style.display = "none";
         }
-        document.getElementById('signup').addEventListener('click', function () {
+        function signup_btn() {
             document.querySelector('.bg-modal').style.display = 'flex';
             document.getElementById('bb').style.overflow = 'hidden';
-        });
+        };
         document.querySelector('.close').addEventListener('click', function () {
             document.querySelector('.bg-modal').style.display = 'none';
             document.getElementById('bb').style.overflow = 'visible';
@@ -607,26 +606,26 @@
         document.getElementById('logout').onclick = function logout_click() {
             alert('logoit');
             document.getElementById('sidebar').innerHTML = `<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
-            <div class="profile-guest" style="display: flex;">
-                <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
-                <div class="profile-heading">Hey!</div>
-                <div class="profile-login-container" style="background-color:white !important;">
-                    <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
-                    <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
-                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
-                        Login / Register
+                <div class="profile-guest" style="display: flex;">
+                    <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
+                    <div class="profile-heading">Hey!</div>
+                    <div class="profile-login-container" style="background-color:white !important;">
+                        <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                        <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                        <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn" onclick="signup_btn()">
+                            Login / Register
+                        </div>
                     </div>
-                </div>
-            </div><!--end of profileguest-->
-        </div>
-        <div class="sidebar-menu">
-            <ul>
-                <li><a href="#"><div class="list-text">Notification</div></a></li>
-                <li><a href="#"><div class="list-text">QuickPay</div></a></li>
-            </ul>
-        </div>`;
+                </div><!--end of profileguest-->
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li><a href="#"><div class="list-text">Notification</div></a></li>
+                    <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+                </ul>
+            </div>`;
 
-            document.getElementById('logout').innerHTML= `<a href="#" id="signup">signup</a>`;
+            document.getElementById('logout').innerHTML = `<a href="#" id="signup">signup</a>`;
 
 
 
@@ -657,99 +656,125 @@
             var password = document.getElementById('password').value;
             //  console.log(username);
             //console.log(password);
-            console.log( JSON.stringify({
-                        user_name: username,
-                        pass: password
-                    }))
-            fetch("http://localhost:51059/api/UserAuthentication",
+            console.log(JSON.stringify({
+                UserName: username,
+                Password: password
+            }))
+            fetch("http://localhost:60562/api/UserAuthentication",
                 {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        user_name: username,
-                        pass: password
+                        UserName: username,
+                        Password: password
                     })
                 }).then(res => res.json())
                 .then(result => {
                     console.log(result)
-                    if (result.length == 0) {
+
+                    let v = 0;
+                    var token = '';
+                    while (result[v] != ':') {
+                        token += result[v];
+                        v++;
+                    }
+                    v++;
+                   
+                    while (v < result.length) {
+                        userid += result[v];
+                        v++;
+                    }
+                    console.log(token);
+                    sessionStorage.setItem("token", token);
+                    sessionStorage.setItem("username", username);
+                    console.log(userid);
+                    if (userid == '0') {
                         alert('wrong entries');
-                        document.getElementById('sidebar').innerHTML=`<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
-            <div class="profile-guest" style="display: flex;">
-                <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
-                <div class="profile-heading">Hey!</div>
-                <div class="profile-login-container" style="background-color:white !important;">
-                    <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
-                    <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
-                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
-                        Login / Register
+                        document.getElementById('sidebar').innerHTML = `<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
+                <div class="profile-guest" style="display: flex;">
+                    <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
+                    <div class="profile-heading">Hey!</div>
+                    <div class="profile-login-container" style="background-color:white !important;">
+                        <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                        <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                        <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn" onclick="signup_btn()" >
+                            Login / Register
+                        </div>
                     </div>
-                </div>
-            </div><!--end of profileguest-->
-        </div>
-        <div class="sidebar-menu">
-            <ul>
-                <li><a href="#"><div class="list-text">Notification</div></a></li>
-                <li><a href="#"><div class="list-text">QuickPay</div></a></li>
-            </ul>
-        </div>`
+                </div><!--end of profileguest-->
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li><a href="#"><div class="list-text">Notification</div></a></li>
+                    <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+                </ul>
+            </div>`
                     }
                     else {
                         document.getElementById('log_button').innerHTML = `<a href="#" id="logout_bttn" onclick="logout_click()">logout</a>`;
-                        document.getElementById('sidebar').innerHTML =`<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
+                        document.getElementById('sidebar').innerHTML = `<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
 
-            <div class="profile-guest" style="display: flex;">
-                <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
-                <div class="profile-heading">Hey! ${username}</div>
-                <div class="profile-login-container" style="background-color:white !important;">
-                    <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
-                    <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
-                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
-                        Logout
+                <div class="profile-guest" style="display: flex;">
+                    <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
+                    <div class="profile-heading">Hey! ${username}</div>
+                    <div class="profile-login-container" style="background-color:white !important;">
+                        <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                        <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                        <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn" onclick="logout_click()">
+                            Logout
+                        </div>
                     </div>
-                </div>
-            </div><!--end of profileguest-->
-        </div>
-        <div class="sidebar-menu">
-            <ul>
-                <li><a href="#"><div class="list-text">Notification</div></a></li>
-                <li><a href="#"><div class="list-text">QuickPay</div></a></li>
-            </ul>
-        </div>`
+                </div><!--end of profileguest-->
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li><a href="#"><div class="list-text">Notification</div></a></li>
+                    <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+                </ul>
+            </div>`
 
                         localStorage.setItem("user_name", username);
+                       
                     }
                 })
 
-             document.querySelector('.bg-modal').style.display = 'none';
+            document.querySelector('.bg-modal').style.display = 'none';
             document.getElementById('bb').style.overflow = 'visible';
         }
         function logout_click() {
             localStorage.setItem("user_name", "");
             //alert('logout');
-            document.getElementById('log_button').innerHTML = `<a href="#" id="signup">signup</a>`;
-            document.getElementById('sidebar').innerHTML=`<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
-            <div class="profile-guest" style="display: flex;">
-                <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
-                <div class="profile-heading">Hey!</div>
-                <div class="profile-login-container" style="background-color:white !important;">
-                    <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
-                    <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
-                    <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn">
-                        Login / Register
+            document.getElementById('log_button').innerHTML = `<a href="#" id="signup" onclick="signup_btn()">signup</a>`;
+            document.getElementById('sidebar').innerHTML = `<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
+                <div class="profile-guest" style="display: flex;">
+                    <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
+                    <div class="profile-heading">Hey!</div>
+                    <div class="profile-login-container" style="background-color:white !important;">
+                        <img src="https://in.bmscdn.com/webin/movies/superstar/rewards_login.png" class="profile-login-image-container">
+                        <div class="profile-login-text">Unlock special offers &amp; great benefits</div>
+                        <div class="profile-login-button" data-nav-menu="Profile" data-group="top-nav" data-modal="signinPopup" id="withoutLogIn" onclick="signup_btn()">
+                            Login / Register
+                        </div>
                     </div>
-                </div>
-            </div><!--end of profileguest-->
-        </div>
-        <div class="sidebar-menu">
-            <ul>
-                <li><a href="#"><div class="list-text">Notification</div></a></li>
-                <li><a href="#"><div class="list-text">QuickPay</div></a></li>
-            </ul>
-        </div>`
+                </div><!--end of profileguest-->
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li><a href="#"><div class="list-text">Notification</div></a></li>
+                    <li><a href="#"><div class="list-text">QuickPay</div></a></li>
+                </ul>
+            </div>`
 
+        }
+        function moviespage() {
+            if (userid == 0) {
+                alert("please login")
+            }
+            else {
+                 window.location.href = "http://localhost:60564/Home/MoviePage";
+            }
         }
     </script>
 </body>

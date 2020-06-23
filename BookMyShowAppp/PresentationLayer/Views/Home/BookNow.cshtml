@@ -1,18 +1,39 @@
 ﻿
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>BookNow</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <style>
+        .cityLink {
+            color: red;
+        }
+
+            .cityLink.active {
+                color: green;
+            }
+    </style>
+
 </head>
-<body>
-    <div> 
-        <button><a href="/Home/BookSeats">Select Seats</a></button>
+<body style="background-color:lightblue">
+    <div class="jumbotron" id="emptable">
+
     </div>
+    <script src="~/Scripts/BookNowJS.js"></script>
+    <!--  <button onclick="ff()">cgd</button>
+      <div id="name"></div>
+
+      <script>
+      function ff()
+      {
+          document.getElementById("name").innerHTML = localStorage.getItem("local");
+      }
+      </script>-->
+    <button class="btn btn-success" style="margin-left:4%;"><a href="/Home/BookSeats" id="btn" style="text-decoration:none;color:white">Select Seats</a></button>
+
+
 </body>
 </html>

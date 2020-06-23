@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29905.134
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMyShowApp", "BookMyShowAppp\BookMyShowApp.csproj", "{D8E468D6-EB3B-47DB-8AB6-49EC4920F356}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMyShowAppp", "BookMyShowAppp\BookMyShowAppp.csproj", "{D8E468D6-EB3B-47DB-8AB6-49EC4920F356}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{D3F7950E-19A5-460D-82AE-253A11A7AD23}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{AB10DF36-B1A6-4E46-A207-A99FB1EE0478}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMyShow.API", "BookMyShow.API\BookMyShow.API.csproj", "{BF9E8320-A0EA-46EF-974E-D3E87652BDA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{324B4D53-2F97-44CB-A492-4EC04AFBDC93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,15 +35,12 @@ Global
 		{AB10DF36-B1A6-4E46-A207-A99FB1EE0478}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB10DF36-B1A6-4E46-A207-A99FB1EE0478}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB10DF36-B1A6-4E46-A207-A99FB1EE0478}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF9E8320-A0EA-46EF-974E-D3E87652BDA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF9E8320-A0EA-46EF-974E-D3E87652BDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF9E8320-A0EA-46EF-974E-D3E87652BDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF9E8320-A0EA-46EF-974E-D3E87652BDA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{324B4D53-2F97-44CB-A492-4EC04AFBDC93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{324B4D53-2F97-44CB-A492-4EC04AFBDC93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{324B4D53-2F97-44CB-A492-4EC04AFBDC93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{324B4D53-2F97-44CB-A492-4EC04AFBDC93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D7114881-6BC4-4990-86DF-736DB04F584F}
 	EndGlobalSection
 EndGlobal

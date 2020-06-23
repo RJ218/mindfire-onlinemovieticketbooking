@@ -19,7 +19,7 @@ namespace DataLayer
         public int ShowId { get; set; }
         public int TicketQuantity { get; set; }
         public System.DateTime Date { get; set; }
-    
-        public virtual Show Show { get; set; }
+        public int SeatId { get; set; }
+        public int Sno { get; set; }
     }
 }

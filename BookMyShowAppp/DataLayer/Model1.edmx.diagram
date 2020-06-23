@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="433b2b5979124964944eb5a5705b7d38" Name="Diagram1">
+        <EntityTypeShape EntityType="MovieModel.Booking" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieModel.MovieTable" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieModel.Seat" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieModel.Show" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieModel.Theatre" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieModel.User" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="MovieModel.FK_Booking_Show" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieModel.FK_Booking_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieModel.FK_Show_MovieTable" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieModel.FK_Show_Theatre" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieModel.FK_Seat_Show" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
