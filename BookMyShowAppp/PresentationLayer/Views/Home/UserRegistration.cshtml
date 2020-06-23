@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@model DTO.UserDTO
+<!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -7,74 +8,86 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        body {
+          
+            background-image: url('../../Images/movie.jpg');
+            background-size:cover;
+            background-position:top;
+            background-repeat: no-repeat;
+            
+            font-family: 'Times New Roman';
+        }
+        h1{
+            font-size:40px;
+            color:lightgrey;
+            margin-top:20px;
+            margin-bottom:30px;
+        }
+        .form-control{
+            background:rgba(255,255,255,.2);
+            border:0px;
+            border-radius:0px;
+            border-bottom:2px solid white;
+            font-size:15px;
+            color:white;
+        }
+        .btn-info{
+            margin-left:150px;
+            margin-top:20px;
+            width:180px;
+            font-size:19px;
+            border-radius:1000px;
+        }
+        .col-md-6{
+            background:rgba(0,0,0,.4);
+            height:660px;
+            box-shadow:-1px 1px 60px 10px black inset;
+        }
+    </style>
 </head>
 <body>
-    <div class="jumbotron">
-        <h1 style=" ">User Registration</h1>
-        <label class="form-control">User Name:</label>
-        <input class="form-control" id="user_name" type="text" />
-
-
-        <label class="form-control">Mobile No:</label>
-        <input class="form-control" id="mobile_no" type="text" />
-
-
-        <label class="form-control">Email Id:</label>
-        <input class="form-control" id="email_id" type="text" />
-
-
-        <label class="form-control">Address:</label>
-        <input class="form-control" id="address" type="text" />
-
-        <label class="form-control">Password:</label>
-        <input class="form-control" id="password" type="password" />
-        <button class="btn btn-primary" id="submit">Submit</button>
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script>
-            document.getElementById('submit').onclick = function submit() {
-              //  alert('submit');
-                var name = document.getElementById('user_name').value;
-                var mobile_no = document.getElementById('mobile_no').value;
-                var email_id = document.getElementById('email_id').value;
-                var address = document.getElementById('address').value;
-                var password = document.getElementById('password').value;
-                console.log(JSON.stringify({
-                    UserName: name,
-                    Password: password,
-                    MobileNo: mobile_no,
-                    EmailId: email_id,
-                    Address: address
-                }));
-                //console.log(name + mobile_no + email_id + address + password);
-
-                fetch("http://localhost:60562/api/UserRegistration",
-                    {
-                        method: "POST",
-                        headers: {
-                            'Content-Type' : 'application/json'
-                        },
-                        body: JSON.stringify({
-                            UserName: name,
-                            Password: password,
-                            MobileNo: mobile_no,
-                           EmailId: email_id,
-                            Address:address
-                             })
-                    }
-                ).then(res => res.json())
-                    .then(result => {
-                        console.log(result);
-                    })
-            };
-    </script>
-
+    @using (Html.BeginForm())
+    {
+       <div class="container">
+           <div class="row">
+               <div class="col-md-3"></div>
+               <div class="col-md-6">
+                   <h1 class="text-center">Register</h1>
+                   <!--make a row in col-md-6 for label and textbox-->
+                   <div class="form-group">
+                   @Html.LabelFor(m => m.UserName, new { @class = "control-label",style="color:white"})
+                   @Html.TextBoxFor(m => m.UserName, new { @class = "form-control",placeholder = "Name" })
+                   </div>
+                   <div class="form-group">
+                       @Html.LabelFor(m => m.Password, new { @class = "control-label", style = "color:white" })
+                       @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                   </div>
+                   <div class="form-group">
+                       @Html.LabelFor(m => m.MobileNo, new { @class = "control-label", style = "color:white" })
+                       @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", placeholder = "MobileNo" })
+                   </div>
+                   <div class="form-group">
+                       @Html.LabelFor(m => m.EmailId, new { @class = "control-label", style = "color:white" })
+                       @Html.TextBoxFor(m => m.EmailId, new { @class = "form-control",type="email", placeholder = "EmailId" })
+                   </div>
+                   <div class="form-group">
+                       @Html.LabelFor(m => m.Address, new { @class = "control-label", style = "color:white" })
+                       @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
+                   </div>
+                   <button class="btn btn-info" formaction="UserRegistration">Submit</button>
+                   </div>
+               </div>
+           </div>
+       
+    }
 </body>
 </html>>

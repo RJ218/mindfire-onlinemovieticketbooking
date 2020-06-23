@@ -11,6 +11,15 @@
     <Property Name="ShowId" Type="int" />
     <Property Name="SeatId" Type="int" />
   </EntityType>
+  <EntityType Name="Cast">
+    <Key>
+      <PropertyRef Name="RowNo" />
+    </Key>
+    <Property Name="MovieId" Type="int" Nullable="false" />
+    <Property Name="ActorName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActorPhotoLink" Type="varchar(max)" Nullable="false" />
+    <Property Name="RowNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <EntityType Name="MovieTable">
     <Key>
       <PropertyRef Name="MovieId" />
@@ -24,6 +33,7 @@
     <Property Name="Rating" Type="int" Nullable="false" />
     <Property Name="ImageAddress" Type="varchar(max)" Nullable="false" />
     <Property Name="Synopsis" Type="varchar(max)" />
+    <Property Name="Price" Type="int" />
   </EntityType>
   <EntityType Name="Seat">
     <Key>
@@ -138,6 +148,7 @@
   </Association>
   <EntityContainer Name="BookMyShowModelStoreContainer">
     <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cast" EntityType="Self.Cast" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MovieTable" EntityType="Self.MovieTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Show" EntityType="Self.Show" Schema="dbo" store:Type="Tables" />

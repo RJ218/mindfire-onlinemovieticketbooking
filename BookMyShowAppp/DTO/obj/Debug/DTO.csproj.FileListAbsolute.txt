@@ -3,8 +3,3 @@ D:\Projects\WFormCP\BookMyShowAppp\DTO\bin\Debug\DTO.pdb
 D:\Projects\WFormCP\BookMyShowAppp\DTO\obj\Debug\DTO.dll
 D:\Projects\WFormCP\BookMyShowAppp\DTO\obj\Debug\DTO.pdb
 D:\Projects\WFormCP\BookMyShowAppp\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
-C:\Users\RJ\Desktop\git\nupur\mindfire-onlinemovieticketbooking\BookMyShowAppp\DTO\bin\Debug\DTO.dll
-C:\Users\RJ\Desktop\git\nupur\mindfire-onlinemovieticketbooking\BookMyShowAppp\DTO\bin\Debug\DTO.pdb
-C:\Users\RJ\Desktop\git\nupur\mindfire-onlinemovieticketbooking\BookMyShowAppp\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
-C:\Users\RJ\Desktop\git\nupur\mindfire-onlinemovieticketbooking\BookMyShowAppp\DTO\obj\Debug\DTO.dll
-C:\Users\RJ\Desktop\git\nupur\mindfire-onlinemovieticketbooking\BookMyShowAppp\DTO\obj\Debug\DTO.pdb

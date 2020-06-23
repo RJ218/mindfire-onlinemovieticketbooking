@@ -22,25 +22,27 @@ namespace BusinessLayer
             EntityToDTOTheatreShow dto = new EntityToDTOTheatreShow();
             return dto.ConvertSeatNo(obj.GetSeatNo(theatreid));
         }
-        public List<MovieTableDTO> Movies()
+       /* public List<MovieTableDTO> Movies()
         {
             EntityToDTOTheatreShow dto = new EntityToDTOTheatreShow();
             return dto.ConvertMovies(obj.Movies());
-        }
-        public IQueryable<int> userAuthentication(UserDTO val)
+        }*/
+        public UserDTO userAuthentication(UserDTO val)
         {
             DTOtoEntity entity = new DTOtoEntity();
-           return (obj.userAuthentication(entity.ConvertUserDTOtoEntity(val)));
+            EntityToDTOTheatreShow sh = new EntityToDTOTheatreShow();
+            return sh.ConvertUserEntitytoDTO(obj.userAuthentication(entity.ConvertUserDTOtoEntity(val)));
+             
         }
         public void userRegistration(UserDTO val)
         {
             DTOtoEntity entity = new DTOtoEntity();
             obj.UserRegistration(entity.ConvertUserDTOtoEntity(val));
         }
-        public void RegisterSeatInfo(BookSeatDTO data)
+        public List<User> RegisterSeatInfo(BookSeatDTO data)
          {
             DTOtoEntity entity = new DTOtoEntity();
-            obj.RegisterSeatInfo(entity.ConvertBookSeat(data));
+            return (obj.RegisterSeatInfo(entity.ConvertBookSeat(data)));
          }
 
     }

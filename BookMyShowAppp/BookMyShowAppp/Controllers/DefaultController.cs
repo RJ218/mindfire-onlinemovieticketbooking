@@ -8,6 +8,7 @@ using DataLayer;
 using DTO;
 using BusinessLayer;
 using System.Web.Http.Cors;
+using BookMyShowAppp.Filter;
 
 namespace BookMyShowAppp.Controllers
 {
@@ -16,68 +17,88 @@ namespace BookMyShowAppp.Controllers
     public class DefaultController : ApiController
     {
        [HttpGet]
-       [Route("GetData")]
+       [Filter.CustomAuthentication]
+        [Route("GetData")]
        //returns thatre and show table values 
        public IHttpActionResult GetData(int movieid)
         {
-            //  MoviesDAL cls = new MoviesDAL();
-            //return Ok(cls.Check(movieid));
             MoviesBAL movbal = new MoviesBAL();
             return Ok(movbal.TheatreShowData(movieid));
         }
         [HttpGet]
+        [Filter.CustomAuthentication]
         [Route("GetInfo")]
         //returns movie table entries to movie page
         public IHttpActionResult GetInfo()
         {
-            // MoviesDAL cls = new MoviesDAL();
-            //var info = (cls.Movies());
-            MoviesBAL movbal = new MoviesBAL();
+             MoviesDAL movbal = new MoviesDAL();
             return Ok(movbal.Movies());
         }
-
         [HttpGet]
+        [Route("GetCastInfo")]
+        public List<Cast> GetCastInfo()
+        {
+            MoviesDAL dal_obj = new MoviesDAL();
+            return dal_obj.GetCastInfo();
+        }
+        [HttpGet]
+        [Filter.CustomAuthentication]
         [Route("GetTheatreId")]
         public IHttpActionResult GetTheatreId(int theatreid)
         {
-            // MoviesDAL check = new MoviesDAL();
             MoviesBAL movbal = new MoviesBAL();
            return Ok(movbal.GetSeatNo(theatreid));
             
         }
         [HttpPost]
+        [Filter.CustomAuthentication]
         [Route("SubmitSeats")]
         public IHttpActionResult SubmitSeats([FromBody] BookSeatDTO data)
         {
-            //MoviesDAL check = new MoviesDAL();
             MoviesBAL movbal = new MoviesBAL();
-            movbal.RegisterSeatInfo(data);
-            return Ok("gg");
+            
+            return Ok(movbal.RegisterSeatInfo(data));
+        }
+         [HttpPost]
+         [Route("UserAuthentication")]
+         public HttpResponseMessage UserAuthentication(UserDTO obj)
+         {
+             MoviesBAL bal_obj = new MoviesBAL();
+            var val=bal_obj.userAuthentication(obj);
+            
+            if(val==null)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadGateway,message:"username and password invalid");
+            }
+            else
+            {
+                var token = TokenManager.GenerateToken(val.UserName);
 
-        }
-        [HttpPost]
-        [Route("UserAuthentication")]
-        public IQueryable<int> UserAuthentication(UserDTO obj)
-        {
-            MoviesBAL bal_obj = new MoviesBAL();
-             return (bal_obj.userAuthentication(obj));
-        }
+                return Request.CreateResponse(HttpStatusCode.OK,value:token+":"+val.UserId);
+               
+            }
+         }
         [HttpPost]
         [Route("UserRegistration")]
-        public int UserRegistration(UserDTO obj)
+        public int UserRegistration(UserDTO user)
         {
             MoviesBAL Bal_obj = new MoviesBAL();
-            Bal_obj.userRegistration(obj);
+            Bal_obj.userRegistration(user);
             return 1;
         }
-
         [HttpGet]
+        [Filter.CustomAuthentication]
         [Route("GetBookingInfo")]
         public List<Booking> GetBookingInfo(int showid)
         {
             MoviesDAL bal_obj = new MoviesDAL();
             return bal_obj.GetBookingInfo(showid);
-
+        }
+        [HttpGet]
+        public void userddata(int userid)
+        {
+            MoviesDAL m = new MoviesDAL();
+            m.userddata(userid);
         }
     }
 }

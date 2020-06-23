@@ -12,10 +12,10 @@ namespace DTO
         public Nullable<int> UserId { get; set; }
         public Nullable<int> TicketQuantity { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-        public IList<Value_dto> SeatF { get; set; }
+        public List<ValueDTO> SeatF { get; set; }
     }
 
-    public class Value_dto
+    public class ValueDTO
     {
         public int getseat { get; set; }
     }

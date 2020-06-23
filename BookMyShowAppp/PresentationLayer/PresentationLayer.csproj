@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44380</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -46,6 +46,9 @@
   <ItemGroup>
     <Reference Include="DataLayer">
       <HintPath>..\DataLayer\bin\Debug\DataLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="DTO">
+      <HintPath>..\DTO\bin\Debug\DTO.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -80,9 +83,16 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="paytm">
+      <HintPath>C:\Users\Nupur bhaat\Downloads\paytm.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -201,6 +211,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaytmController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,7 +232,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\admit.jpg" />
     <Content Include="Images\book.png" />
+    <Content Include="Images\bookme.jpg" />
+    <Content Include="Images\buy.jpg" />
+    <Content Include="Images\CINEMA.jpg" />
+    <Content Include="Images\direct.jpg" />
     <Content Include="Images\download.jpg" />
     <Content Include="Images\download2.jpg" />
     <Content Include="Images\download3.png" />
@@ -238,8 +254,13 @@
     <Content Include="Images\image4.jpg" />
     <Content Include="Images\image5.jpg" />
     <Content Include="Images\image6.jpg" />
+    <Content Include="Images\movie.jpg" />
     <Content Include="Images\onlineeven.jpg" />
     <Content Include="Images\onlineplays.jpg" />
+    <Content Include="Images\popcorn.jpg" />
+    <Content Include="Images\seats.gif" />
+    <Content Include="Images\speaker.jpg" />
+    <Content Include="Images\ticket.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\BookNowJS.js" />
@@ -296,6 +317,8 @@
     <Content Include="Views\Home\BookSeats.cshtml" />
     <Content Include="Views\Home\MovieInformation.cshtml" />
     <Content Include="Views\Home\UserRegistration.cshtml" />
+    <Content Include="Views\Home\pay.cshtml" />
+    <Content Include="Views\Paytm\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

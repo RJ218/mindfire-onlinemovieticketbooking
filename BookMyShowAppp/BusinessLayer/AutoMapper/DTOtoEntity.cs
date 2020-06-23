@@ -13,6 +13,7 @@ namespace BusinessLayer.AutoMapper
     {
         public User ConvertUserDTOtoEntity(UserDTO user)
         {
+            
             Mapper.Initialize(config =>
             {
                 config.CreateMap<UserDTO,User>();
@@ -27,14 +28,11 @@ namespace BusinessLayer.AutoMapper
             Mapper.Initialize(config =>
             {
                 config.CreateMap<BookSeatDTO, BookSeat>();
-                config.CreateMap<Value_dto, Value>();
+                config.CreateMap<ValueDTO, Value>();
             });
-            
-
            // for (int i = 0; i < id.SeatF.Count; i++)
               // map.Add(Mapper.Map<BookSeat>(id.SeatF[i]));
             var map = Mapper.Map<BookSeat>(id);
-            
             return map;
         }
 

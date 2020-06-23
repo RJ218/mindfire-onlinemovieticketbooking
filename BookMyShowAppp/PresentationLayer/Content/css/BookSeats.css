@@ -14,7 +14,7 @@ body{
 .container{
     perspective:1000px;
     margin-bottom:30px;
-    max-width:600px!important;
+    max-width:700px!important;
 }
 .seat{
     background-color:dimgray;
@@ -82,5 +82,8 @@ p.text{
 }
 
 #count{
+    color:red;
+}
+#total{
     color:red;
 }

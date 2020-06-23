@@ -26,14 +26,29 @@
     <script>
         function passid() {
             var movieid = $("h2").attr("id");
-            alert(movieid);
+
             localStorage.setItem("movieval", movieid);
             return false;
         }
     </script>
+    <style>
+                    html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+    </style>
 </head>
 <body>
-    <div><h2 id=@movieid></h2>
+    <div>
+        <h2 id=@movieid></h2>
         <div class='container-fluid' id='container'>
 
         </div>
@@ -90,29 +105,9 @@
                             <div id="collapseOne" class="collapse " aria-labelledby="headingOne"
                                  data-parent="#accordionExample">
                                 <div class="card-body ml-4">
-                                    <div class='row'>
-
-                                        <div class="card shadow cast mr-3">
-                                            <img class="card-img-top movie_img" src="" alt="Card image cap">
-
-                                            <p class="card_title">Matt Damon</p>
+                                    <div class='row' id="cast">
 
 
-                                        </div>
-                                        <div class="card shadow cast mr-3">
-                                            <img class="card-img-top movie_img" src="" alt="Card image cap">
-
-                                            <p class="card_title">Jessica Chastain</p>
-
-
-                                        </div>
-                                        <div class="card shadow cast mr-3">
-                                            <img class="card-img-top movie_img" src="" alt="Card image cap">
-
-                                            <p class="card_title">Kate Mara</p>
-
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -142,13 +137,16 @@
         $.ajax(
             fetch("http://localhost:60562/api/GetInfo",
                 {
-                    method:"GET"
+                    method:"GET",
+                    headers:{
+                        'Authorization': 'Bearer ' + sessionStorage.getItem('token')+":"+sessionStorage.getItem('username')
+                    }
                 }).then(res => res.json())
                 .then(result => {
                     //console.log(result);
                     for (let i = 0; i < result.length; i++) {
                         //console.log(result[i]);
-                        //console.log(@movieid);
+                        //alert(@movieid);
                         if (result[i].MovieId == @movieid) {
                             document.getElementById('container').innerHTML= `<div id='top_page'>
 
@@ -165,13 +163,33 @@
                             document.getElementById('cc').innerHTML = result[i].Rating;
                         document.getElementById('synopsis').innerHTML = result[i].Synopsis;
                         //console.log(result[i])
-                    
+
                     }//loop
 
                 }
         }  )
         )
-   
+
+        fetch("http://localhost:60562/api/GetCastInfo",
+            {
+                method:"GET"
+            }).then(res => res.json())
+            .then(result => {
+                console.log(result);
+                for (let i = 0; i < result.length; i++) {
+                    if (result[i].MovieId ==@movieid) {
+                            document.getElementById("cast").innerHTML+= ` <div class="card shadow cast mr-3">
+                                            <img class="card-img-top movie_img" src=${result[i].ActorPhotoLink} alt="Card image cap">
+
+                                            <p class="card_title">${result[i].ActorName}</p>
+
+
+                                        </div>`
+                    }
+                }
+
+            })
+
     </script>
     <script src="~/Scripts/BookNowJS.js"></script>
 </body>

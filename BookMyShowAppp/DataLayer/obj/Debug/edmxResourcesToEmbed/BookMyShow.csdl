@@ -4,12 +4,14 @@
     <Key>
       <PropertyRef Name="BookingId" />
     </Key>
-    <Property Name="BookingId" Type="Int32" Nullable="false" />
-    <Property Name="UserId" Type="Int32" Nullable="false" />
-    <Property Name="ShowId" Type="Int32" Nullable="false" />
+    <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
     <Property Name="TicketQuantity" Type="Int32" Nullable="false" />
-    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="SeatId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="ShowId" Type="Int32" />
+    <Property Name="SeatId" Type="Int32" />
+    <NavigationProperty Name="Seat" Relationship="Self.FK_Booking_Seat" FromRole="Booking" ToRole="Seat" />
+    <NavigationProperty Name="Show" Relationship="Self.FK_Booking_Show" FromRole="Booking" ToRole="Show" />
   </EntityType>
   <EntityType Name="MovieTable">
     <Key>
@@ -24,40 +26,64 @@
     <Property Name="Rating" Type="Int32" Nullable="false" />
     <Property Name="ImageAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Synopsis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Shows" Relationship="Self.FK_Show_MovieTable" FromRole="MovieTable" ToRole="Show" />
+  </EntityType>
+  <EntityType Name="Seat">
+    <Key>
+      <PropertyRef Name="SeatId" />
+    </Key>
+    <Property Name="SeatId" Type="Int32" Nullable="false" />
+    <Property Name="TheatreId" Type="Int32" />
+    <Property Name="SeatNo" Type="Int32" />
+    <NavigationProperty Name="Theatre" Relationship="Self.FK_Seat_Theatre" FromRole="Seat" ToRole="Theatre" />
   </EntityType>
   <EntityType Name="Show">
     <Key>
       <PropertyRef Name="ShowId" />
     </Key>
     <Property Name="ShowId" Type="Int32" Nullable="false" />
-    <Property Name="MovieId" Type="Int32" Nullable="false" />
-    <Property Name="TheatreId" Type="Int32" Nullable="false" />
-    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TheatreId" Type="Int32" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="MovieId" Type="Int32" />
   </EntityType>
   <EntityType Name="Theatre">
     <Key>
       <PropertyRef Name="TheatreId" />
     </Key>
     <Property Name="TheatreId" Type="Int32" Nullable="false" />
-    <Property Name="TheatreName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TheatreName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pincode" Type="Int32" />
+    <NavigationProperty Name="Shows" Relationship="Self.FK_Show_Theatre" FromRole="Theatre" ToRole="Show" />
   </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="UserId" />
     </Key>
     <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="Int64" />
+    <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_User" FromRole="User" ToRole="Booking" />
   </EntityType>
+  <Association Name="FK_Booking_Seat">
+    <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seat">
+        <PropertyRef Name="SeatId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="SeatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Booking_Show">
-    <End Role="Show" Type="Self.Show" Multiplicity="1" />
+    <End Role="Show" Type="Self.Show" Multiplicity="0..1" />
     <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Show">
@@ -68,8 +94,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Booking_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Show_MovieTable">
-    <End Role="MovieTable" Type="Self.MovieTable" Multiplicity="1" />
+    <End Role="MovieTable" Type="Self.MovieTable" Multiplicity="0..1" />
     <End Role="Show" Type="Self.Show" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MovieTable">
@@ -80,8 +118,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Seat_Theatre">
+    <End Role="Theatre" Type="Self.Theatre" Multiplicity="0..1" />
+    <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Theatre">
+        <PropertyRef Name="TheatreId" />
+      </Principal>
+      <Dependent Role="Seat">
+        <PropertyRef Name="TheatreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Show_Theatre">
-    <End Role="Theatre" Type="Self.Theatre" Multiplicity="1" />
+    <End Role="Theatre" Type="Self.Theatre" Multiplicity="0..1" />
     <End Role="Show" Type="Self.Show" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Theatre">
@@ -92,48 +142,36 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BookMyShowEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="BookMyShowEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Bookings" EntityType="Self.Booking" />
     <EntitySet Name="MovieTables" EntityType="Self.MovieTable" />
+    <EntitySet Name="Seats" EntityType="Self.Seat" />
     <EntitySet Name="Shows" EntityType="Self.Show" />
     <EntitySet Name="Theatres" EntityType="Self.Theatre" />
     <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Booking_Seat" Association="Self.FK_Booking_Seat">
+      <End Role="Seat" EntitySet="Seats" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
     <AssociationSet Name="FK_Booking_Show" Association="Self.FK_Booking_Show">
       <End Role="Show" EntitySet="Shows" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_User" Association="Self.FK_Booking_User">
+      <End Role="User" EntitySet="Users" />
       <End Role="Booking" EntitySet="Bookings" />
     </AssociationSet>
     <AssociationSet Name="FK_Show_MovieTable" Association="Self.FK_Show_MovieTable">
       <End Role="MovieTable" EntitySet="MovieTables" />
       <End Role="Show" EntitySet="Shows" />
     </AssociationSet>
+    <AssociationSet Name="FK_Seat_Theatre" Association="Self.FK_Seat_Theatre">
+      <End Role="Theatre" EntitySet="Theatres" />
+      <End Role="Seat" EntitySet="Seats" />
+    </AssociationSet>
     <AssociationSet Name="FK_Show_Theatre" Association="Self.FK_Show_Theatre">
       <End Role="Theatre" EntitySet="Theatres" />
       <End Role="Show" EntitySet="Shows" />
     </AssociationSet>
-    <EntitySet Name="Seats" EntityType="BookMyShowModel.Seat" />
-    <AssociationSet Name="FK_Seat_Theatre" Association="BookMyShowModel.FK_Seat_Theatre">
-      <End Role="Theatre" EntitySet="Theatres" />
-      <End Role="Seat" EntitySet="Seats" />
-    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Seat">
-    <Key>
-      <PropertyRef Name="SeatId" />
-    </Key>
-    <Property Name="SeatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TheatreId" Type="Int32" Nullable="false" />
-    <Property Name="SeatNo" Type="Int32" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_Seat_Theatre">
-    <End Type="BookMyShowModel.Theatre" Role="Theatre" Multiplicity="1" />
-    <End Type="BookMyShowModel.Seat" Role="Seat" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Theatre">
-        <PropertyRef Name="TheatreId" />
-      </Principal>
-      <Dependent Role="Seat">
-        <PropertyRef Name="TheatreId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

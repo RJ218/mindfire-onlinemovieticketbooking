@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model DataLayer.BookUser
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -8,8 +9,9 @@
     <link href="~/Content/css/BookSeats.css" rel="stylesheet" />
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
-<body style="background-color:#af9292!important;">
+<body style="background-color: #af9292 !important;">
     <div class="movie-container">
         <h1 id="pvrname"></h1>
     </div>
@@ -27,15 +29,15 @@
             <small>Occupied</small>
         </li>
     </ul>
-    <div class="container" style="max-width:600px!important;">
+    <div class="container" style="max-width:700px!important;">
         <div class="screen" style="margin-left:30px!important;width:90%!important">
         </div>
-        <div class="row" style="margin-left:150px!important;">
+        <div class="row" style="margin:50px!important;">
             
     </div>
         </div>
     <!--<p class="text">you have selected <span id="count">0</span> seats for price Rs <span id="total">0</span></p>-->
-    <p class="text"> you have selected <span id="count">0</span> seats</p>
+    <p class="text"> you have selected <span id="count">0</span> seats for price Rs <span id="total">0</span></p>
     <button type="button" class="btn btn-success" id="btn" >Pay Now</button>
     
     <script>
@@ -43,37 +45,42 @@
        var arr = [];
        var ThData = localStorage.getItem("theatreid");
         var bookedseats = [];
-        console.log(ThData);
-        
+//        console.log(ThData);
+
         fetch(
-            
+
             "http://localhost:60562//api/GetBookingInfo?showid=" + localStorage.getItem("showid"),
             {
-                method:"GET"
+                method: "GET", headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.getItem('token') + ":" + sessionStorage.getItem('username')
+                }
             }).then(res => res.json())
             .then(result => {
-                console.log(result)
+              //  console.log(result)
                 for (let i = 0; i < result.length; i++) {
                     bookedseats.push(result[i].SeatId);
 
                 }
             }
-                    
-            
+
+
         ).then(
-           
 
 
-        fetch( 
+
+        fetch(
                 "http://localhost:60562//api/GetTheatreId?theatreid=" + ThData,
                 {
-                    method:"GET"
+                    method: "GET",
+                    headers: {
+                        'Authorization': 'Bearer ' + sessionStorage.getItem('token') + ":" + sessionStorage.getItem('username')
+                    }
             }).then(res => res.json())
                 .then(response => {
-                    console.log(bookedseats)
+                    //console.log(bookedseats)
                     var x = JSON.stringify(response);
-                    console.log(ThData);
-                    console.log(x);
+                    //console.log(ThData);
+                  //  console.log(x);
                     var y = JSON.parse(x);
                     for(var i=0;i<y.length;i++)
                     {
@@ -81,24 +88,30 @@
                             $(".row")[0].innerHTML += "<br/>" + "<div class='seat' id="+y[i]['SeatId']+" onclick='xx("+y[i]['SeatId']+")'>" + y[i]['SeatNo'] + "</div>";
                         }
                         else { $(".row")[0].innerHTML += "<div class='seat'  id=" + y[i]['SeatId'] + " onclick='xx(" + y[i]['SeatId'] + ")'> " + y[i]['SeatNo'] + "</div>"; }
-                        
+
                     }
                     for (let j = 0; j < bookedseats.length; j++) {
+                      
                         document.getElementById(bookedseats[j]).classList.add('occupied')
                     }
                 }))
-               
-                    
-                
-        
+
+
+
+
             const container = document.querySelector(".container");
             const seats = document.querySelectorAll(".row .seat:not(.occupied)");
             const count = document.getElementById("count");
-            console.log(count);
+            const total = document.getElementById("total");
+          //  console.log(count);
             function updateSelectedCount() {
                 const selectedSeats = document.querySelectorAll(".row .seat.selected");
                 const selectedSeatsCount = selectedSeats.length;
+                const totalprice = selectedSeatsCount * localStorage.getItem('movieprice');
+                localStorage.setItem('totalprice', totalprice);
+                total.innerText = totalprice;
                 count.innerText = selectedSeatsCount;
+
             }
             container.addEventListener("click", function (e) {
                 if (e.target.classList.contains("seat") && !e.target.classList.contains("occupied")) {
@@ -110,19 +123,19 @@
                             if (e.target.classList.contains("selected")) {
                                 e.target.classList.remove("selected");
                                 e.target.classList.add("occupied");
-                    
+
                                 //console.log(obj);
                             }
-                           
+
                         });
-                       
+
                     }
                     updateSelectedCount();
                 }
-               
+
             });
-           
-          
+
+
             function xx(id) {
                 if (document.getElementById(id).className == "seat")
                     arr.push(id);
@@ -136,25 +149,37 @@
                     }
                     }
 
-                    console.log(arr);
+                  //  console.log(arr);
                // console.log(document.getElementById(id).className);
             }
             document.getElementById("btn").addEventListener("click", function () {
                 {
                    var array = [];
-                    console.log(arr.length);
+                   // console.log(arr.length);
                     for (var i = 0; i < arr.length; i++)
                     {
                        array.push({ "getseat": arr[i] });
-                        
+
                     }
                    
-                    var obj = { "ShowId": localStorage.getItem("showid"), "Date": localStorage.getItem("time"), "TicketQuantity": arr.length, "SeatF":array };
-                    console.log(obj);
+                    var obj = { "UserId":sessionStorage.getItem('u'),"ShowId": localStorage.getItem("showid"), "Date": localStorage.getItem("time"), "TicketQuantity": arr.length, "SeatF":array };
+                   // console.log(obj);
                     $.ajax(
                        {
-                           type: "POST", url: "http://localhost:60562//api/SubmitSeats", data: obj, datatype: "json", success: (response) => {
+                           type: "POST", url: "http://localhost:60562//api/SubmitSeats", data: obj, headers: {
+                               'Authorization': 'Bearer ' + sessionStorage.getItem('token')+":"+sessionStorage.getItem('username')
+                           }, datatype: "json", success: (response) => {
                                alert("success");
+                               var userdata = {};
+                               for (let i in response)
+                               {
+                                   userdata.usermob = response[i].MobileNo;
+                                   userdata.userid = response[i].UserId;
+                                   userdata.useremail = response[i].EmailId;
+                                   break;
+                               }
+                              window.location = "http://localhost:60564/Home/Payment?userid=" + userdata['userid']+"&emailid="+userdata['useremail']+"&mob="+userdata['usermob']+"&price="+localStorage.getItem('totalprice');
+                             // window.location = "http://localhost:60564/Home/Payment";
                            },
                            error: (err) => {
                                alert(err);
@@ -163,7 +188,7 @@
 
                        })
 
-                    
+
                 }
             });
     </script>

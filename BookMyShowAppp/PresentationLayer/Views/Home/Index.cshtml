@@ -10,6 +10,18 @@
 
     <link href="~/Content/css/IndexStyle.css" rel="stylesheet" />
     <style>
+        html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
         .primary-navbar {
             padding-left: 0 !important;
         }
@@ -112,6 +124,7 @@
 </head>
 
 <body id="bb" style="background-color:#D3D3D3;">
+    
     <header style="min-height:'65px'; display: block;">
         <nav id="navbar" class="navbar">
             <div class="primary-header">
@@ -127,8 +140,8 @@
                         <span class="icon"></span><!--search icon to be inserted-->
                         <input type="text" class="search" placeholder="Search for Movies,Events,Plays,Sports and Activities" name="text">
                     </div>
-                    <nav class="header-col header-col-3" style="width:70% !important; padding:0px !important">
-                        <ul>
+                    <nav class="header-col header-col-3" style="width:45% !important; padding:0px !important">
+                        <ul style=" margin-left: 50%!important">
                             <li>
                                 <!--first city selection-->
                                 <a href="#" onclick="getCity()">NCR&nbsp;&nbsp;<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
@@ -248,10 +261,10 @@
                                 <a href="#" class="nav-link menu-item">Sports</a>
                             </li>
                             <li class="primary-menu">
-                                <a href="http://localhost:60564/Home/MoviePage#" class="nav-link menu-item">Movies</a>
+                                <a   class="nav-link menu-item" onclick="checked()">Movies</a>
                             </li>
                             <li class="primary-menu">
-                                <a href="http://localhost:60564/Home/MoviePage" class="nav-link menu-item">Monuments</a>
+                                <a href="#" class="nav-link menu-item">Monuments</a>
                             </li>
                             <li class="primary-menu">
                                 <a href="#" class="nav-link menu-item">Fanhood</a>
@@ -486,6 +499,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha256-NXRS8qVcmZ3dOv3LziwznUHPegFhPZ1F/4inU7uC8h0=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
+       
+        function checked()
+        {
+            $(document).ready(function () {
+                if (sessionStorage.getItem('token') == null) {
+                    
+                    alert("gg");
+                    document.location.href = "/Home/Index";
+                }
+                else
+                    document.location.href = "/Home/MoviePage";
+                    
+
+                }
+            );
+        }
         var login = 0;
 
         if (login == 0) {
@@ -602,6 +631,27 @@
 
                 vbox.style.display = "none";
         });
+        window.addEventListener('mouseup', function (event) {
+            var item1 = document.getElementById('language');
+            var item2 = document.getElementById('select-lang');
+            var item3 = document.getElementById('langop');
+            var item4 = document.getElementById('eng');
+            var item5 = document.getElementById('english');
+            var item6 = document.getElementById('hin');
+            var item7 = document.getElementById('hindi');
+            var item8 = document.getElementById('mara');
+            var item9 = document.getElementById('marathi');
+
+
+            if (event.target != item1 && event.target.parentNode != item1 && event.target != item1 && event.target != item2
+                && event.target.parentNode != item2 && event.target != item3 && event.target.parentNode != item3 && event.target != item4
+                && event.target.parentNode != item4 && event.target != item5 && event.target.parentNode != item5 &&
+                event.target != item6 && event.target.parentNode != item6 && event.target != item7 && event.target.parentNode != item7 &&
+                event.target != item8 && event.target.parentNode != item8 && event.target != item9 && event.target.parentNode != item9)
+
+                item1.style.display = "none";
+
+        });
 
         document.getElementById('logout').onclick = function logout_click() {
             alert('logoit');
@@ -630,27 +680,8 @@
 
 
         }
+        
 
-        window.addEventListener('mouseup', function (event) {
-            var item1 = document.getElementById('language');
-            var item2 = document.getElementById('select-lang');
-            var item3 = document.getElementById('langop');
-            var item4 = document.getElementById('eng');
-            var item5 = document.getElementById('english');
-            var item6 = document.getElementById('hin');
-            var item7 = document.getElementById('hindi');
-            var item8 = document.getElementById('mara');
-            var item9 = document.getElementById('marathi');
-
-
-            if (event.target != item1 && event.target.parentNode != item1 && event.target != item1 && event.target != item2
-                && event.target.parentNode != item2 && event.target != item3 && event.target.parentNode != item3 && event.target != item4
-                && event.target.parentNode != item4 && event.target != item5 && event.target.parentNode != item5 &&
-                event.target != item6 && event.target.parentNode != item6 && event.target != item7 && event.target.parentNode != item7 &&
-                event.target != item8 && event.target.parentNode != item8 && event.target != item9 && event.target.parentNode != item9)
-                item1.style.display = "none";
-
-        });
         function submit_button() {
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
@@ -672,9 +703,11 @@
                     })
                 }).then(res => res.json())
                 .then(result => {
-                    console.log(result)
-                    if (result.length == 0) {
-                        alert('wrong entries');
+                    console.log(result);
+
+                    if (result.Message=="username and password invalid") {
+                        alert(result.Message);
+                        sessionStorage.setItem('token',null);
                         document.getElementById('sidebar').innerHTML = `<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
                 <div class="profile-guest" style="display: flex;">
                     <div style="background-color:#2e3147"><a href="javascript:void(0)" onclick="closebtn()" style="background-color:#2e3147;color:white;text-decoration:none">&times;</a></div>
@@ -696,6 +729,17 @@
             </div>`
                     }
                     else {
+                        console.log(result);
+                        var tokenanduser = [];
+                        tokenanduser = result.split(":");
+                        var token = tokenanduser[0];
+                        var userid = tokenanduser[1];
+                        sessionStorage.setItem('token',token);
+                        sessionStorage.setItem('u',userid)
+                        var x=sessionStorage.getItem('u');
+                        console.log(x);
+                        sessionStorage.setItem('username', username);
+                     
                         document.getElementById('log_button').innerHTML = `<a href="#" id="logout_bttn" onclick="logout_click()">logout</a>`;
                         document.getElementById('sidebar').innerHTML = `<div class="wrapper" style="min-height:20%;background-color:#D3D3D3; ">
 
@@ -719,6 +763,7 @@
             </div>`
 
                         localStorage.setItem("user_name", username);
+                     
                     }
                 })
 
@@ -726,6 +771,7 @@
             document.getElementById('bb').style.overflow = 'visible';
         }
         function logout_click() {
+            sessionStorage.setItem('token', null);
             localStorage.setItem("user_name", "");
             //alert('logout');
             document.getElementById('log_button').innerHTML = `<a href="#" id="signup" onclick="signup_btn()">signup</a>`;
@@ -750,6 +796,7 @@
             </div>`
 
         }
+       
     </script>
 </body>
 </html>

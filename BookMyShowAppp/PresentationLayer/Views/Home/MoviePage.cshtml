@@ -25,6 +25,20 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+              html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+    </style>
 </head>
 
 <body id="bb" onload="set_cards()" style="background-color:#D3D3D3;">
@@ -196,7 +210,7 @@
     <div class='container-fluid'>
         <div class='jumbotron'>
             <p>
-                <span id='movies_heading'>Upcoming Movies</span> <span class='coming_soon'>now showing</span> <span class='coming_soon'>coming soon</span> <span class='coming_soon'>Exclusive</span>
+                <span id='movies_heading'>Upcoming Movies</span> <span class='coming_soon' style="color:black;font-size:20px">now showing</span>
             </p>
 
             <div class='row'>
@@ -297,25 +311,32 @@
 
 
     <script>
-                var card_info = [];
-                function set_cards(...para) {
-                    $.ajax(
-                        fetch("http://localhost:60562//api/GetInfo", {
-                            method: "GET"
+       
+           
+        
+        //  console.log(sessionStorage.getItem('token'));
+            var card_info = [];
+            function set_cards(...para) {
+                $.ajax(
 
-                        })
-                            .then(res => res.json())
-                            .then(result => {
-                                //alert('api');
-                                card_info = result;
-                                console.log(card_info);
+                    fetch("http://localhost:60562//api/GetInfo",{
+                headers: {
+                    'Authorization': "Bearer " + sessionStorage.getItem('token')+":"+sessionStorage.getItem('username')
+            }
+               , method: "GET"
+              
+                }).then(res => res.json())
+                        .then(result => {
+                            //alert('api');
+                            card_info = result;
+                            console.log(card_info);
 
-                            }).then(display => {
-                                // console.log(card_info)
-                                console.log(para)
-                                for (let i = 0; i < card_info.length; i++) {
-                                    var url = "http://localhost:60564/Home/MovieInformation?movieid=" + card_info[i].MovieId;
-                                    document.getElementById('movies_row').innerHTML += `<div class=' col-md-3 mr-5'>
+                        }).then(display => {
+                            // console.log(card_info)
+                            console.log(para)
+                            for (let i = 0; i < card_info.length; i++) {
+                                var url = "http://localhost:60564/Home/MovieInformation?movieid=" + card_info[i].MovieId;
+                                document.getElementById('movies_row').innerHTML += `<div class=' col-md-3 mr-5'>
                             <div class="card" onclick='window.location.href="${url}";' shadow mb-4 " id=${card_info[i].MovieId} style="width: 18rem;">
                                 <img class="card-img-top movie_img" src=${card_info[i].ImageAddress}
                                      alt="Card image cap">
@@ -328,17 +349,18 @@
                                 </div>
                             </div>
                         </div>`
-                                }
+                            }
 
-                            })
+                        })
 
-                    )
-                }
-                function set_card_lang() {
-                    alert('select')
-                    console.log(card_info)
-                }
-
+                )
+            }
+      
+            function set_card_lang() {
+                alert('select')
+                console.log(card_info)
+            }
+    
 
                 function signup() {
                     document.getElementById("signinpopup").style.display = "block";
