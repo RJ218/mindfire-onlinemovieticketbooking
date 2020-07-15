@@ -319,6 +319,7 @@
     <Content Include="Views\Home\UserRegistration.cshtml" />
     <Content Include="Views\Home\pay.cshtml" />
     <Content Include="Views\Paytm\Index.cshtml" />
+    <Content Include="Views\Home\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

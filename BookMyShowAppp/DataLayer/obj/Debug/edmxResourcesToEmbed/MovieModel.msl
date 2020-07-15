@@ -60,18 +60,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Bookings">
-      <EntityTypeMapping TypeName="BookMyShowModel.Booking">
-        <MappingFragment StoreEntitySet="Booking">
-          <ScalarProperty Name="SeatId" ColumnName="SeatId" />
-          <ScalarProperty Name="ShowId" ColumnName="ShowId" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="TicketQuantity" ColumnName="TicketQuantity" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Casts">
       <EntityTypeMapping TypeName="BookMyShowModel.Cast">
         <MappingFragment StoreEntitySet="Cast">
@@ -79,6 +67,19 @@
           <ScalarProperty Name="ActorPhotoLink" ColumnName="ActorPhotoLink" />
           <ScalarProperty Name="ActorName" ColumnName="ActorName" />
           <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="BookMyShowModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="sno" ColumnName="sno" />
+          <ScalarProperty Name="SeatId" ColumnName="SeatId" />
+          <ScalarProperty Name="ShowId" ColumnName="ShowId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TicketQuantity" ColumnName="TicketQuantity" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

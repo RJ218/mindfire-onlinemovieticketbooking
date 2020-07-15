@@ -64,6 +64,11 @@ namespace BookMyShowAppp
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "820183536878-bhu1urqi7stot5qmbl0hq3i1c363dln1.apps.googleusercontent.com",
+                ClientSecret = "ASaMcmJNhuU_Vv5Gnaeh7FHi"
+            });
         }
     }
 }

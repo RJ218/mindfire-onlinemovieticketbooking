@@ -435,6 +435,25 @@
                 <a href="#" class="btn btn-primary    active" onclick="submit_button()" role="button" aria-pressed="true">Submit</a>
                 <a href="http://localhost:60564/Home/UserRegistration" class="btn btn-primary" id="register_bttn">Register Now</a>
 
+                <table class="table table-bordered" style="position:relative;top:35px;">
+                    <thead>
+                        <tr class="success">
+                            <th>
+                                Social Logins
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="button" id="btnGoogleLogin"
+                                       value="Login with Google" class="btn btn-success" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
             </form>
         </div><!--modal-content-->
     </div><!--bg-modal-->
@@ -564,19 +583,10 @@
                 // instead of a settings object
             ]
         });
-        /*$('.slider').slick({
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-});*/
-        /*	window.addEventListener('mouseup', function(event){
-               var vbox=document.getElementById('sidebar');
-               if(event.target !=vbox && event.target.parentNode !=vbox)
-               {
-                vbox.style.display="none";
-               }
-            });*/
+        $('#btnGoogleLogin').click(function () {
+            window.location.href = "/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A60562%2F";
+        });
+
         function signup() {
             document.getElementById("signinpopup").style.display = "block";
         }

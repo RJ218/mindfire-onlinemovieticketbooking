@@ -7,14 +7,15 @@
     <Schema Namespace="BookMyShowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Booking">
           <Key>
-            <PropertyRef Name="BookingId" />
+            <PropertyRef Name="sno" />
           </Key>
-          <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="TicketQuantity" Type="int" Nullable="false" />
           <Property Name="Date" Type="datetime" />
           <Property Name="ShowId" Type="int" />
           <Property Name="SeatId" Type="int" />
+          <Property Name="sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Cast">
           <Key>
@@ -302,6 +303,7 @@
             <End Role="Theatre" EntitySet="Theatres" />
             <End Role="Show" EntitySet="Shows" />
           </AssociationSet>
+          <EntitySet Name="Casts" EntityType="BookMyShowModel.Cast" />
           <EntitySet Name="Bookings" EntityType="BookMyShowModel.Booking" />
           <AssociationSet Name="FK_Booking_Seat" Association="BookMyShowModel.FK_Booking_Seat">
             <End Role="Seat" EntitySet="Seats" />
@@ -315,11 +317,19 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Booking" EntitySet="Bookings" />
           </AssociationSet>
-          <EntitySet Name="Casts" EntityType="BookMyShowModel.Cast" />
         </EntityContainer>
+        <EntityType Name="Cast">
+          <Key>
+            <PropertyRef Name="RowNo" />
+          </Key>
+          <Property Name="MovieId" Type="Int32" Nullable="false" />
+          <Property Name="ActorName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActorPhotoLink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RowNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
         <EntityType Name="Booking">
           <Key>
-            <PropertyRef Name="BookingId" />
+            <PropertyRef Name="sno" />
           </Key>
           <Property Name="BookingId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" />
@@ -327,6 +337,7 @@
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="ShowId" Type="Int32" />
           <Property Name="SeatId" Type="Int32" />
+          <Property Name="sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK_Booking_Seat">
           <End Type="BookMyShowModel.Seat" Role="Seat" Multiplicity="0..1" />
@@ -364,15 +375,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Cast">
-          <Key>
-            <PropertyRef Name="RowNo" />
-          </Key>
-          <Property Name="MovieId" Type="Int32" Nullable="false" />
-          <Property Name="ActorName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ActorPhotoLink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="RowNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -438,18 +440,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Bookings">
-            <EntityTypeMapping TypeName="BookMyShowModel.Booking">
-              <MappingFragment StoreEntitySet="Booking">
-                <ScalarProperty Name="SeatId" ColumnName="SeatId" />
-                <ScalarProperty Name="ShowId" ColumnName="ShowId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="TicketQuantity" ColumnName="TicketQuantity" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Casts">
             <EntityTypeMapping TypeName="BookMyShowModel.Cast">
               <MappingFragment StoreEntitySet="Cast">
@@ -457,6 +447,19 @@
                 <ScalarProperty Name="ActorPhotoLink" ColumnName="ActorPhotoLink" />
                 <ScalarProperty Name="ActorName" ColumnName="ActorName" />
                 <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="BookMyShowModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="sno" ColumnName="sno" />
+                <ScalarProperty Name="SeatId" ColumnName="SeatId" />
+                <ScalarProperty Name="ShowId" ColumnName="ShowId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TicketQuantity" ColumnName="TicketQuantity" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -20,5 +20,6 @@ namespace DataLayer
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> ShowId { get; set; }
         public Nullable<int> SeatId { get; set; }
+        public int sno { get; set; }
     }
 }

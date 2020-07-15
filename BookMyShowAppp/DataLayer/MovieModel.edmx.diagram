@@ -13,11 +13,11 @@
         <AssociationConnector Association="BookMyShowModel.FK_Show_MovieTable" ManuallyRouted="false" />
         <AssociationConnector Association="BookMyShowModel.FK_Seat_Theatre" ManuallyRouted="false" />
         <AssociationConnector Association="BookMyShowModel.FK_Show_Theatre" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="BookMyShowModel.Booking" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BookMyShowModel.Cast" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="BookMyShowModel.Booking" Width="1.5" PointX="6.125" PointY="0.625" />
         <AssociationConnector Association="BookMyShowModel.FK_Booking_Seat" />
         <AssociationConnector Association="BookMyShowModel.FK_Booking_Show" />
         <AssociationConnector Association="BookMyShowModel.FK_Booking_User" />
-        <EntityTypeShape EntityType="BookMyShowModel.Cast" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

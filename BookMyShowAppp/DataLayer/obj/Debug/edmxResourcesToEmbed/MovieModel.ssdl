@@ -2,14 +2,15 @@
 <Schema Namespace="BookMyShowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Booking">
     <Key>
-      <PropertyRef Name="BookingId" />
+      <PropertyRef Name="sno" />
     </Key>
-    <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookingId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" />
     <Property Name="TicketQuantity" Type="int" Nullable="false" />
     <Property Name="Date" Type="datetime" />
     <Property Name="ShowId" Type="int" />
     <Property Name="SeatId" Type="int" />
+    <Property Name="sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Cast">
     <Key>

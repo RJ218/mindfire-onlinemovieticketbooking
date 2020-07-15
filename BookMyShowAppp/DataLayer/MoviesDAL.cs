@@ -51,14 +51,18 @@ namespace DataLayer
         {
              
             BookMyShowEntities4 db = new BookMyShowEntities4();
+          
             var obj = new Booking();
-            for(var i=0;i<data.SeatF.Count();i++)
+
+            var bookingno = db.Bookings.Select(m => m.BookingId).Distinct().Count();
+            bookingno++;
+            for (var i = 0; i < data.SeatF.Count(); i++)
             {
-                obj.ShowId=data.ShowId;
-                obj.UserId = data.UserId;
+                obj.ShowId = data.ShowId;
                 obj.TicketQuantity = (int)data.TicketQuantity;
-                obj.Date = data.Date;
+                obj.Date = Convert.ToDateTime(data.Date);
                 obj.SeatId = Convert.ToInt32(data.SeatF[i].getseat);
+                obj.BookingId = bookingno;
                 db.Bookings.Add(obj);
                 db.SaveChanges();
             }

@@ -108,7 +108,7 @@ namespace PresentationLayer.Controllers
             Response.Write(outputHTML);
         }
 
-        public void SendEmail(string receiver,int price)
+        public ActionResult SendEmail(string receiver,int price)
         {
 
             MailMessage mm = new MailMessage("shadowfrdmlb@gmail.com", receiver);
@@ -125,7 +125,7 @@ namespace PresentationLayer.Controllers
             smtp.UseDefaultCredentials = true;
             smtp.Credentials = nc;
             smtp.Send(mm);
-
+            return View();
            // SendSms(Amount);
            // return RedirectToAction("SuccessPage", "Dominos");
         }
